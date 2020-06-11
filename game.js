@@ -14,6 +14,8 @@ const cards = [
 ]
 
 let cardsFlipped = []
+let flippedCard1 = []
+let flippedCard2 = []
 
 window.addEventListener('load', () => {
   for (let i = 0; i < cards.length; i++) {
@@ -30,15 +32,29 @@ window.addEventListener('load', () => {
     let el = e.target
     let parent = el.parentNode
     let card = parent.getAttribute('data-id')
-    cardsFlipped.push(card)
-    console.log(cardsFlipped)
-    checkForMatch()
+    
+    if (card == null) {
+      return
+    } else {
+      cardsFlipped.push(card)
+      console.log(cardsFlipped)
+      checkForMatch()
+    }
+    
   })
 
   function checkForMatch() {
     if (cardsFlipped.length === 2) {
-      console.log('hi')
-    }
+      flippedCard1 = cardsFlipped[0] 
+      flippedCard2 = cardsFlipped[1] 
+      if (flippedCard1 === flippedCard2) {
+        console.log("match")
+      } else {
+        flippedCard1 = []
+        flippedCard2 = []
+        cardsFlipped = []
+      }
+    } 
   }
 
 })
