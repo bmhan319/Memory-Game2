@@ -1,3 +1,4 @@
+// Cards in the pile to play Memory with
 const cards = [
   { name:"cheeseburger", src:"cheeseburger.png", id:1 },
   { name:"cheeseburger", src:"cheeseburger.png", id:1 },
@@ -18,6 +19,7 @@ let cardFlippedID1 = []
 let cardFlippedID2 = []
 let cardsFlippedIndex = []
 
+//On Page Load, load gameboard
 window.addEventListener('load', () => {
   for (let i = 0; i < cards.length; i++) {
     const gameBoard = document.querySelector('.gameBoard')
@@ -29,6 +31,7 @@ window.addEventListener('load', () => {
     
   }
 
+  //on click, start game
   window.addEventListener('click', (e)=> {
     let el = e.target
     let parent = el.parentNode
@@ -36,18 +39,20 @@ window.addEventListener('load', () => {
     let cardID = parent.getAttribute('id')
     let cardItem = cards[cardID].src
     
+    //When player clicks outside the gameboard, do nothing
     if (card == null) {
       return
+    //else flip cards to play the game
     } else {
       cardsFlippedID.push(card)
       cardsFlippedIndex.push(cardID)
       el.setAttribute("src", `/images/${cardItem}`)
       checkForMatch(cardsFlippedIndex)
-      console.log(cardsFlippedID)
     }
     
   })
 
+  //after two cards are selected check for match
   function checkForMatch(index) {
     if (cardsFlippedID.length === 2) {
       let firstSelected = document.getElementById(index[0]).children
@@ -55,12 +60,15 @@ window.addEventListener('load', () => {
       cardFlippedID1 = cardsFlippedID[0] 
       cardFlippedID2 = cardsFlippedID[1] 
 
+      //if cards match, do something
       if (cardFlippedID1 === cardFlippedID2) {
         console.log("match")
         cardsFlippedID = []
         cardFlippedID1 = []
         cardFlippedID2 = []
         cardsFlippedIndex = []
+      
+      // else flip the cards back and reset container variables
       } else {
         setTimeout( ()=>{
           firstSelected[0].setAttribute('src', "/images/blank.png")
