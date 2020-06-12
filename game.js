@@ -13,10 +13,10 @@ const cards = [
   { name:"pizza", src:"pizza.png", id:6 },
 ]
 
-let cardsFlipped = []
+let cardsFlippedID = []
+let cardFlippedID1 = []
+let cardFlippedID2 = []
 let cardsFlippedIndex = []
-let flippedCard1 = []
-let flippedCard2 = []
 
 window.addEventListener('load', () => {
   for (let i = 0; i < cards.length; i++) {
@@ -39,35 +39,36 @@ window.addEventListener('load', () => {
     if (card == null) {
       return
     } else {
-      cardsFlipped.push(card)
+      cardsFlippedID.push(card)
       cardsFlippedIndex.push(cardID)
       el.setAttribute("src", `/images/${cardItem}`)
       checkForMatch(cardsFlippedIndex)
-      
+      console.log(cardsFlippedID)
     }
     
   })
 
   function checkForMatch(index) {
-    if (cardsFlipped.length === 2) {
+    if (cardsFlippedID.length === 2) {
       let firstSelected = document.getElementById(index[0]).children
       let secondSelected = document.getElementById(index[1]).children
+      cardFlippedID1 = cardsFlippedID[0] 
+      cardFlippedID2 = cardsFlippedID[1] 
 
-      flippedCard1 = cardsFlipped[0] 
-      flippedCard2 = cardsFlipped[1] 
-      if (flippedCard1 === flippedCard2) {
+      if (cardFlippedID1 === cardFlippedID2) {
         console.log("match")
-        flippedCard1 = []
-        flippedCard2 = []
-        cardsFlipped = []
+        cardsFlippedID = []
+        cardFlippedID1 = []
+        cardFlippedID2 = []
+        cardsFlippedIndex = []
       } else {
         setTimeout( ()=>{
           firstSelected[0].setAttribute('src', "/images/blank.png")
           secondSelected[0].setAttribute('src', "/images/blank.png")
           }, 500 )
-        flippedCard1 = []
-        flippedCard2 = []
-        cardsFlipped = []
+        cardsFlippedID = []
+        cardFlippedID1 = []
+        cardFlippedID2 = []
         cardsFlippedIndex = []
       }
     } 
