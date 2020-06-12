@@ -32,12 +32,17 @@ window.addEventListener('load', () => {
     let el = e.target
     let parent = el.parentNode
     let card = parent.getAttribute('data-id')
+    let cardID = parent.getAttribute('id')
+    let cardItem = cards[cardID].src
     
     if (card == null) {
       return
     } else {
       cardsFlipped.push(card)
       console.log(cardsFlipped)
+      console.log(cardItem)
+      el.setAttribute("src", `/images/${cardItem}`)
+      console.log(el)
       checkForMatch()
     }
     
