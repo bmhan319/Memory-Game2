@@ -50,6 +50,9 @@ window.addEventListener('load', () => {
 
   function checkForMatch(index) {
     if (cardsFlipped.length === 2) {
+      let firstSelected = document.getElementById(index[0]).children
+      let secondSelected = document.getElementById(index[1]).children
+
       flippedCard1 = cardsFlipped[0] 
       flippedCard2 = cardsFlipped[1] 
       if (flippedCard1 === flippedCard2) {
@@ -58,9 +61,6 @@ window.addEventListener('load', () => {
         flippedCard2 = []
         cardsFlipped = []
       } else {
-        let firstSelected = document.getElementById(index[0]).children
-        let secondSelected = document.getElementById(index[1]).children
-        
         setTimeout( ()=>{
           firstSelected[0].setAttribute('src', "/images/blank.png")
           secondSelected[0].setAttribute('src', "/images/blank.png")
