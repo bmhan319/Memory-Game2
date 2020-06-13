@@ -20,12 +20,15 @@
     </div>
     <div class="themeContainer">
       <h4>Pic a Game Theme</h4>
-      <button>Animal</button>
-      <button>Dinosaur</button>
+      <button type="button" onclick="changeTheme(animalCards, 0)">Animal</button>
+      <button type="button" onclick="changeTheme(dinoCards, 1)">Dinosaur</button>
     </div>
   </div>
   
-  <div class="gameBoard"></div>
+  <div class="gameContainer">
+    <div class="gameBoard"></div>
+  </div>
+  
 </body>
 <script src="game.js"></script>
 </html>

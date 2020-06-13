@@ -7,11 +7,7 @@
 
 body {
   width: 100vw;
-  height: 100vh;
-  background-image: url('images/animals/jungle.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center; 
+  background-color: #ccc;
 }
 
 .header {
@@ -22,6 +18,7 @@ body {
   display: inline-flex;
   align-items: center;
 }
+
 
 .header h2,
 .header h3 {
@@ -40,10 +37,19 @@ body {
   width: 50%;
 }
 
+.gameContainer {
+  width: 100%;
+  background-image: url('images/backgrounds/animalCardsBG.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top; 
+}
+
 .gameBoard {
   width: 80vw;
   max-width: 700px;
-  margin: 24px auto;
+  margin: 0 auto;
+  padding: 24px 0;
   display: flex;
   flex-wrap: wrap;
 }
@@ -52,10 +58,9 @@ body {
   margin: .5%;
   width: 15.65%;
   display: flex;
-  align-content: center;
-  justify-content: center;
   border: 2px solid #000;
 }
 
 .topCard {
+  width: 100%;
 }

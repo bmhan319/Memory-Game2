@@ -41,8 +41,38 @@ const animalCards = [
   { name:"penguin", src:"animals/penguin.png", id:12 }
 ]
 
+const dinoCards = [
+  { name:"beaveallosaurus", src:"dinosaurs/allosaurus.png", id:1 },
+  { name:"allosaurus", src:"dinosaurs/allosaurus.png", id:1 },
+  { name:"ankylosaurus", src:"dinosaurs/ankylosaurus.png", id:2 },
+  { name:"ankylosaurus", src:"dinosaurs/ankylosaurus.png", id:2 },
+  { name:"apatosaurus", src:"dinosaurs/apatosaurus.png", id:3 },
+  { name:"apatosaurus", src:"dinosaurs/apatosaurus.png", id:3 },
+  { name:"brachiosaurus", src:"dinosaurs/brachiosaurus.png", id:4 },
+  { name:"brachiosaurus", src:"dinosaurs/brachiosaurus.png", id:4 },
+  { name:"coelophysis", src:"dinosaurs/coelophysis.png", id:5 },
+  { name:"coelophysis", src:"dinosaurs/coelophysis.png", id:5 },
+  { name:"deinonychus", src:"dinosaurs/deinonychus.png", id:6 },
+  { name:"deinonychus", src:"dinosaurs/deinonychus.png", id:6 },
+  { name:"hypsilophodon", src:"dinosaurs/hypsilophodon.png", id:7 },
+  { name:"hypsilophodon", src:"dinosaurs/hypsilophodon.png", id:7 },
+  { name:"iguanodon", src:"dinosaurs/iguanodon.png", id:8 },
+  { name:"iguanodon", src:"dinosaurs/iguanodon.png", id:8 },
+  { name:"pachycephalosaurus", src:"dinosaurs/pachycephalosaurus.png", id:9 },
+  { name:"pachycephalosaurus", src:"dinosaurs/pachycephalosaurus.png", id:9 },
+  { name:"parasaurolophus", src:"dinosaurs/parasaurolophus.png", id:10 },
+  { name:"parasaurolophus", src:"dinosaurs/parasaurolophus.png", id:10 },
+  { name:"plesiosaurus", src:"dinosaurs/plesiosaurus.png", id:11 },
+  { name:"plesiosaurus", src:"dinosaurs/plesiosaurus.png", id:11 },
+  { name:"pteranodon", src:"dinosaurs/pteranodon.png", id:12 },
+  { name:"pteranodon", src:"dinosaurs/pteranodon.png", id:12 }
+]
+
+
+
 const backgrounds = [
-  {animals: "jungle.jpg"}
+  'animalCardsBG.jpg',
+  'dinoCardsBG.jpg'
 ]
 
 //container variables to store data of each move
@@ -82,6 +112,15 @@ function createBoard() {
       topCard.setAttribute("id", i)
       gameBoard.appendChild(topCard)
     }
+}
+
+function changeTheme(theme, index) {
+  if (confirm('Are you sure?  You will lose all progress in the current game.')) {
+    deleteBoard()
+    cards = theme
+    document.querySelector('.gameContainer').style.backgroundImage = `url('images/backgrounds/${backgrounds[index]}')`
+    createBoard()
+  }
 }
 
 //Delete GameBoard
