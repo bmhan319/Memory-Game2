@@ -80,13 +80,15 @@ window.addEventListener('load', () => {
       cardsFlippedIndex.push(cardID)
       el.setAttribute("src", `/images/${cardItem}`)
       checkForMatch(cardsFlippedIndex)
-      document.getElementById(cardsFlippedIndex).style.pointerEvents = 'none'
     }
   })
 
   //after two cards are selected check for match
   function checkForMatch(index) {
-    
+    if (document.getElementById(index) !== null) {
+      document.getElementById(index).style.pointerEvents = 'none'
+    }
+
     if (cardsFlippedID.length === 2) {
       const stopClick = document.querySelector('.gameBoard')
       let firstSelected = document.getElementById(index[0]).children
