@@ -38,6 +38,7 @@ body {
 .gameBoard div {
   width: 25%;
   height: 33.3333%;
+  border: 1px solid #000;
 }
 
 .topCard {

@@ -42,7 +42,7 @@ function createBoard() {
   for (let i = 0; i < cards.length; i++) {
       const gameBoard = document.querySelector('.gameBoard')
       let topCard = document.createElement('div')
-      topCard.innerHTML = '<img class="topCard" src="/images/blank.png" alt="top of card">'
+      topCard.innerHTML = '<img class="topCard" src="/images/blank.jpg" alt="top of card">'
       topCard.setAttribute("data-id", cards[i].id)
       topCard.setAttribute("id", i)
       gameBoard.appendChild(topCard)
@@ -82,9 +82,12 @@ window.addEventListener('load', () => {
 
   //after two cards are selected check for match
   function checkForMatch(index) {
+    
     if (cardsFlippedID.length === 2) {
+      const stopClick = document.querySelector('.gameBoard')
       let firstSelected = document.getElementById(index[0]).children
       let secondSelected = document.getElementById(index[1]).children
+      stopClick.style.pointerEvents ="none"
       cardFlippedID1 = cardsFlippedID[0] 
       cardFlippedID2 = cardsFlippedID[1] 
 
@@ -98,6 +101,7 @@ window.addEventListener('load', () => {
         cardFlippedID1 = []
         cardFlippedID2 = []
         cardsFlippedIndex = []
+        stopClick.style.pointerEvents ="auto"
       
       // else flip the cards back and reset container variables
       } else {
@@ -105,8 +109,9 @@ window.addEventListener('load', () => {
         message.innerHTML = "Not A Match"
 
         setTimeout( ()=>{
-          firstSelected[0].setAttribute('src', "/images/blank.png")
-          secondSelected[0].setAttribute('src', "/images/blank.png")
+          firstSelected[0].setAttribute('src', "/images/blank.jpg")
+          secondSelected[0].setAttribute('src', "/images/blank.jpg")
+          stopClick.style.pointerEvents ="auto"
           }, 500 )
         cardsFlippedID = []
         cardFlippedID1 = []
