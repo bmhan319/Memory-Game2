@@ -20,6 +20,27 @@ let cardsFlippedID = []
 let cardFlippedID1 = []
 let cardFlippedID2 = []
 let cardsFlippedIndex = []
+shuffleArray(cards)
+
+//shuffle the cards using Fisher-Yates (aka Knuth) Shuffle
+  function shuffleArray(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex)
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex]
+    array[currentIndex] = array[randomIndex]
+    array[randomIndex] = temporaryValue
+  }
+
+  return array;
+  }
 
 //On Page Load, load gameboard
 window.addEventListener('load', () => {
@@ -99,6 +120,7 @@ window.addEventListener('load', () => {
         cardFlippedID1 = []
         cardFlippedID2 = []
         cardsFlippedIndex = []
+        shuffleArray(cards)
       }
     }
   }
