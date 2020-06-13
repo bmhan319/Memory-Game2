@@ -41,8 +41,13 @@ const animalCards = [
   { name:"penguin", src:"animals/penguin.png", id:12 }
 ]
 
+const backgrounds = [
+  {animals: "jungle.jpg"}
+]
+
 //container variables to store data of each move
-let cards = foodCards
+//let cards = foodCards
+let cards = animalCards
 let numOfMatches = 0
 let cardsFlippedID = []
 let cardFlippedID1 = []

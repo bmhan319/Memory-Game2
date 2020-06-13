@@ -8,7 +8,10 @@
 body {
   width: 100vw;
   height: 100vh;
-  background-color: #ccc;
+  background-image: url('images/animals/jungle.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; 
 }
 
 .header {
@@ -26,23 +29,33 @@ body {
   padding-left: 16px;
 }
 
+.gridType {
+  background-color: #ccc;
+  display: flex;
+  width: 100%;
+}
+
+.gridContainer,
+.themeContainer {
+  width: 50%;
+}
+
 .gameBoard {
-  width: 60vw;
-  max-width: 800px;
+  width: 80vw;
+  max-width: 700px;
   margin: 24px auto;
   display: flex;
   flex-wrap: wrap;
 }
 
 .gameBoard div {
-  margin: 1%;
-  width: 23%;
+  margin: .5%;
+  width: 15.65%;
   display: flex;
   align-content: center;
   justify-content: center;
+  border: 2px solid #000;
 }
 
 .topCard {
-  width: 100%;
-  max-width: 100px;
 }
