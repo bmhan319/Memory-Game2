@@ -1,5 +1,5 @@
 // Cards in the pile to play Memory with
-const cards = [
+const foodCards = [
   { name:"cheeseburger", src:"cheeseburger.png", id:1 },
   { name:"cheeseburger", src:"cheeseburger.png", id:1 },
   { name:"fries", src:"fries.png", id:2 },
@@ -14,7 +14,35 @@ const cards = [
   { name:"pizza", src:"pizza.png", id:6 },
 ]
 
+const animalCards = [
+  { name:"beaver", src:"animals/beaver.png", id:1 },
+  { name:"beaver", src:"animals/beaver.png", id:1 },
+  { name:"cat", src:"animals/cat.png", id:2 },
+  { name:"cat", src:"animals/cat.png", id:2 },
+  { name:"chick", src:"animals/chick.png", id:3 },
+  { name:"chick", src:"animals/chick.png", id:3 },
+  { name:"chicken", src:"animals/chicken.png", id:4 },
+  { name:"chicken", src:"animals/chicken.png", id:4 },
+  { name:"cow", src:"animals/cow.png", id:5 },
+  { name:"cow", src:"animals/cow.png", id:5 },
+  { name:"dog", src:"animals/dog.png", id:6 },
+  { name:"dog", src:"animals/dog.png", id:6 },
+  { name:"donkey", src:"animals/donkey.png", id:7 },
+  { name:"donkey", src:"animals/donkey.png", id:7 },
+  { name:"duck", src:"animals/duck.png", id:8 },
+  { name:"duck", src:"animals/duck.png", id:8 },
+  { name:"elephant", src:"animals/elephant.png", id:9 },
+  { name:"elephant", src:"animals/elephant.png", id:9 },
+  { name:"lion", src:"animals/lion.png", id:10 },
+  { name:"lion", src:"animals/lion.png", id:10 },
+  { name:"monkey", src:"animals/monkey.png", id:11 },
+  { name:"monkey", src:"animals/monkey.png", id:11 },
+  { name:"penguin", src:"animals/penguin.png", id:12 },
+  { name:"penguin", src:"animals/penguin.png", id:12 }
+]
+
 //container variables to store data of each move
+let cards = foodCards
 let numOfMatches = 0
 let cardsFlippedID = []
 let cardFlippedID1 = []
@@ -43,7 +71,7 @@ function createBoard() {
   for (let i = 0; i < cards.length; i++) {
       const gameBoard = document.querySelector('.gameBoard')
       let topCard = document.createElement('div')
-      topCard.innerHTML = '<img class="topCard" src="/images/blank.jpg" alt="top of card">'
+      topCard.innerHTML = '<img class="topCard" src="/images/blank_rec.jpg" alt="top of card">'
       topCard.setAttribute("data-id", cards[i].id)
       topCard.setAttribute("class", "card"+cards[i].id)
       topCard.setAttribute("id", i)
@@ -121,8 +149,8 @@ window.addEventListener('load', () => {
         message.innerHTML = "Not A Match"
 
         setTimeout( ()=>{
-          firstSelected[0].setAttribute('src', "/images/blank.jpg")
-          secondSelected[0].setAttribute('src', "/images/blank.jpg")
+          firstSelected[0].setAttribute('src', "/images/blank_rec.jpg")
+          secondSelected[0].setAttribute('src', "/images/blank_rec.jpg")
           stopClick.style.pointerEvents ="auto"
         }, 500 )
         document.getElementById(cardsFlippedIndex[0]).style.pointerEvents = 'auto'
