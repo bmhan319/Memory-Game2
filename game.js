@@ -14,6 +14,8 @@ const cards = [
   { name:"pizza", src:"pizza.png", id:6 },
 ]
 
+//container variables to store data of each move
+let numOfMatches = 0
 let cardsFlippedID = []
 let cardFlippedID1 = []
 let cardFlippedID2 = []
@@ -28,7 +30,6 @@ window.addEventListener('load', () => {
     topCard.setAttribute("data-id", cards[i].id)
     topCard.setAttribute("id", i)
     gameBoard.appendChild(topCard)
-    
   }
 
   //on click, start game
@@ -37,19 +38,18 @@ window.addEventListener('load', () => {
     let parent = el.parentNode
     let card = parent.getAttribute('data-id')
     let cardID = parent.getAttribute('id')
-    let cardItem = cards[cardID].src
-    
+    let cardItem
     //When player clicks outside the gameboard, do nothing
     if (card == null) {
       return
     //else flip cards to play the game
     } else {
+      cardItem = cards[cardID].src
       cardsFlippedID.push(card)
       cardsFlippedIndex.push(cardID)
       el.setAttribute("src", `/images/${cardItem}`)
       checkForMatch(cardsFlippedIndex)
     }
-    
   })
 
   //after two cards are selected check for match
@@ -62,7 +62,10 @@ window.addEventListener('load', () => {
 
       //if cards match, do something
       if (cardFlippedID1 === cardFlippedID2) {
-        console.log("match")
+        const message = document.querySelector('#message')
+        message.innerHTML = "Match"
+        numOfMatches++
+        checkForWin()
         cardsFlippedID = []
         cardFlippedID1 = []
         cardFlippedID2 = []
@@ -70,6 +73,9 @@ window.addEventListener('load', () => {
       
       // else flip the cards back and reset container variables
       } else {
+        const message = document.querySelector('#message')
+        message.innerHTML = "Not A Match"
+
         setTimeout( ()=>{
           firstSelected[0].setAttribute('src', "/images/blank.png")
           secondSelected[0].setAttribute('src', "/images/blank.png")
@@ -80,6 +86,21 @@ window.addEventListener('load', () => {
         cardsFlippedIndex = []
       }
     } 
+  }
+
+  //Check to see if all cards are matched
+  function checkForWin() {
+    if (numOfMatches === (cards.length) / 2) {
+      const message = document.querySelector('#message')
+      message.innerHTML = "You Win!"
+      if (confirm("Play Again?")) {
+        numOfMatches = 0
+        cardsFlippedID = []
+        cardFlippedID1 = []
+        cardFlippedID2 = []
+        cardsFlippedIndex = []
+      }
+    }
   }
 
 })
