@@ -44,6 +44,7 @@ function createBoard() {
       let topCard = document.createElement('div')
       topCard.innerHTML = '<img class="topCard" src="/images/blank.jpg" alt="top of card">'
       topCard.setAttribute("data-id", cards[i].id)
+      topCard.setAttribute("class", "card"+cards[i].id)
       topCard.setAttribute("id", i)
       gameBoard.appendChild(topCard)
     }
@@ -89,10 +90,18 @@ window.addEventListener('load', () => {
       let secondSelected = document.getElementById(index[1]).children
       stopClick.style.pointerEvents ="none"
       cardFlippedID1 = cardsFlippedID[0] 
-      cardFlippedID2 = cardsFlippedID[1] 
+      cardFlippedID2 = cardsFlippedID[1]
 
       //if cards match, do something
       if (cardFlippedID1 === cardFlippedID2) {
+        let selectedCards = document.querySelectorAll('.card' + cardFlippedID1)
+        selectedCards.forEach( item => {
+          item.style.pointerEvents = "none"
+        } )
+        console.log(cardFlippedID1, cardFlippedID2)
+        //document.querySelectorAll('.card1').style.pointerEvents = "none"
+        //document.querySelector('.card'+cardFlippedID1).style.pointerEvents = "none"
+        //document.querySelector('.card'+cardFlippedID2).style.pointerEvents = "none"
         const message = document.querySelector('#message')
         message.innerHTML = "Match"
         numOfMatches++
@@ -102,6 +111,7 @@ window.addEventListener('load', () => {
         cardFlippedID2 = []
         cardsFlippedIndex = []
         stopClick.style.pointerEvents ="auto"
+        
       
       // else flip the cards back and reset container variables
       } else {
