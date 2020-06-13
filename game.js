@@ -37,6 +37,7 @@ function shuffleArray(array) {
   return array;
 }
 
+//Create GameBoard
 function createBoard() {
   shuffleArray(cards)
   for (let i = 0; i < cards.length; i++) {
@@ -50,6 +51,7 @@ function createBoard() {
     }
 }
 
+//Delete GameBoard
 function deleteBoard() {
   const gameBoard = document.querySelector('.gameBoard')
   while (gameBoard.firstChild) {
@@ -61,7 +63,7 @@ function deleteBoard() {
 window.addEventListener('load', () => {
   createBoard()
 
-  //on click, start game
+  //On click, start game
   window.addEventListener('click', (e)=> {
     let el = e.target
     let parent = el.parentNode
@@ -78,6 +80,7 @@ window.addEventListener('load', () => {
       cardsFlippedIndex.push(cardID)
       el.setAttribute("src", `/images/${cardItem}`)
       checkForMatch(cardsFlippedIndex)
+      document.getElementById(cardsFlippedIndex).style.pointerEvents = 'none'
     }
   })
 
@@ -94,15 +97,12 @@ window.addEventListener('load', () => {
 
       //if cards match, do something
       if (cardFlippedID1 === cardFlippedID2) {
-        let selectedCards = document.querySelectorAll('.card' + cardFlippedID1)
+        const message = document.querySelector('#message')
+        const selectedCards = document.querySelectorAll('.card' + cardFlippedID1)
         selectedCards.forEach( item => {
           item.style.pointerEvents = "none"
         } )
-        console.log(cardFlippedID1, cardFlippedID2)
-        //document.querySelectorAll('.card1').style.pointerEvents = "none"
-        //document.querySelector('.card'+cardFlippedID1).style.pointerEvents = "none"
-        //document.querySelector('.card'+cardFlippedID2).style.pointerEvents = "none"
-        const message = document.querySelector('#message')
+        
         message.innerHTML = "Match"
         numOfMatches++
         checkForWin()
@@ -122,7 +122,8 @@ window.addEventListener('load', () => {
           firstSelected[0].setAttribute('src', "/images/blank.jpg")
           secondSelected[0].setAttribute('src', "/images/blank.jpg")
           stopClick.style.pointerEvents ="auto"
-          }, 500 )
+        }, 500 )
+        document.getElementById(cardsFlippedIndex[0]).style.pointerEvents = 'auto'
         cardsFlippedID = []
         cardFlippedID1 = []
         cardFlippedID2 = []
