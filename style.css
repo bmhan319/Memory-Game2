@@ -7,6 +7,7 @@
 
 body {
   width: 100vw;
+  height: 100%;
   background-color: #ccc;
 }
 
@@ -30,6 +31,7 @@ body {
   background-color: #ccc;
   display: flex;
   width: 100%;
+  height: 50px;
 }
 
 .gridContainer,
@@ -39,6 +41,7 @@ body {
 
 .gameContainer {
   width: 100%;
+  height: calc(100vh - 100px);
   background-image: url('images/backgrounds/animalCardsBG.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -54,7 +57,7 @@ body {
   flex-wrap: wrap;
 }
 
-.gameBoard div {
+.card {
   margin: .5%;
   width: 15.65%;
   display: flex;

@@ -83,7 +83,7 @@ function createBoard(cardSet) {
       topCard.innerHTML = '<img class="topCard" src="/images/backCards/blank_red.png" alt="top of card">'
     }
     topCard.setAttribute("data-id", cardSet[i].id)
-    topCard.setAttribute("class", "card"+cardSet[i].id)
+    topCard.setAttribute("class", "card card"+cardSet[i].id)
     topCard.setAttribute("id", i)
     gameBoard.appendChild(topCard)
   }
@@ -116,21 +116,34 @@ function shuffleArray(array) {
 //select game board size
 //outputs array that is 12 or 24
 function gameSize(num) {
+  const gameBoard = document.querySelector('.gameBoard')
+  let cards
+
   sizedCards = []
   gridSize = num
+
   if (num === 24) {
     defaultCards.forEach( item => {sizedCards.push(item)} )
   } else if (num === 12) {
-    defaultCards.forEach ( item => {
-      if (item.id < 7 ) {
-        sizedCards.push(item)
-      }
-    })
+    defaultCards.forEach ( item => {if (item.id < 7 ) {sizedCards.push(item)}} )
+    
   }
   deleteBoard()
   createBoard(sizedCards)
+  
+  //Adjusting the CSS sizing AFTER the  new board is created
+  if (num === 24) {
+    cards = document.querySelectorAll('.card')
+    cards.forEach(item => item.style.width = "15.65%")
+    gameBoard.style.maxWidth = "700px"
+  } else if (num === 12) {
+    cards = document.querySelectorAll('.card')
+    cards.forEach(item => item.style.width = "23%")
+    gameBoard.style.maxWidth = "600px"
+  }
 }
 
+//Changes Theme
 function changeTheme(theme, cardColor, index) {
   if (theme === defaultCards) {return alert("You are already on that theme")}
   if (confirm('Are you sure?  You will lose all progress in the current game.')) {
@@ -142,14 +155,12 @@ function changeTheme(theme, cardColor, index) {
   }
 }
 
+
+
 //On Page Load, load gameboard
 window.addEventListener('load', () => {
   createBoard(defaultCards)
 })
-
-
-
-
 
 
 //On click, start game
