@@ -71,8 +71,8 @@ const dinoCards = [
 
 
 const backgrounds = [
-  'animalCardsBG.jpg',
-  'dinoCardsBG.jpg'
+  {backOfCard: 'blank_green.jpg', bg:'animalCardsBG.jpg'},
+  {backOfCard: 'blank_red.png', bg:'dinoCardsBG.jpg'}
 ]
 
 //container variables to store data of each move
@@ -106,7 +106,11 @@ function createBoard() {
   for (let i = 0; i < cards.length; i++) {
       const gameBoard = document.querySelector('.gameBoard')
       let topCard = document.createElement('div')
-      topCard.innerHTML = '<img class="topCard" src="/images/blank_rec.jpg" alt="top of card">'
+      if (cards == animalCards) {
+        topCard.innerHTML = '<img class="topCard" src="/images/backCards/blank_green.jpg" alt="top of card">'
+      } else {
+        topCard.innerHTML = '<img class="topCard" src="/images/backCards/blank_red.png" alt="top of card">'
+      }
       topCard.setAttribute("data-id", cards[i].id)
       topCard.setAttribute("class", "card"+cards[i].id)
       topCard.setAttribute("id", i)
@@ -118,8 +122,9 @@ function changeTheme(theme, index) {
   if (confirm('Are you sure?  You will lose all progress in the current game.')) {
     deleteBoard()
     cards = theme
-    document.querySelector('.gameContainer').style.backgroundImage = `url('images/backgrounds/${backgrounds[index]}')`
+    document.querySelector('.gameContainer').style.backgroundImage = `url('images/backgrounds/${backgrounds[index].bg}')`
     createBoard()
+    //document.querySelector('.topCard').setAttribute('src',`/images/backCards/${backgrounds[index].backOfCard}`)
   }
 }
 
@@ -193,8 +198,13 @@ window.addEventListener('load', () => {
         message.innerHTML = "Not A Match"
 
         setTimeout( ()=>{
-          firstSelected[0].setAttribute('src', "/images/blank_rec.jpg")
-          secondSelected[0].setAttribute('src', "/images/blank_rec.jpg")
+          if (cards == animalCards) {
+            firstSelected[0].setAttribute('src', "/images/backCards/blank_green.jpg")
+            secondSelected[0].setAttribute('src', "/images/backCards/blank_green.jpg")
+          } else {
+            firstSelected[0].setAttribute('src', "/images/backCards/blank_red.png")
+            secondSelected[0].setAttribute('src', "/images/backCards/blank_red.png")
+          }
           stopClick.style.pointerEvents ="auto"
         }, 500 )
         document.getElementById(cardsFlippedIndex[0]).style.pointerEvents = 'auto'
