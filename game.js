@@ -1,19 +1,4 @@
 // Cards in the pile to play Memory with
-const foodCards = [
-  { name:"cheeseburger", src:"cheeseburger.png", id:1 },
-  { name:"cheeseburger", src:"cheeseburger.png", id:1 },
-  { name:"fries", src:"fries.png", id:2 },
-  { name:"fries", src:"fries.png", id:2 },
-  { name:"hotdog", src:"hotdog.png", id:3 },
-  { name:"hotdog", src:"hotdog.png", id:3 },
-  { name:"ice cream", src:"ice-cream.png", id:4 },
-  { name:"ice cream", src:"ice-cream.png", id:4 },
-  { name:"milkshake", src:"milkshake.png", id:5 },
-  { name:"milkshake", src:"milkshake.png", id:5 },
-  { name:"pizza", src:"pizza.png", id:6 },
-  { name:"pizza", src:"pizza.png", id:6 },
-]
-
 const animalCards = [
   { name:"beaver", src:"animals/beaver.png", id:1 },
   { name:"beaver", src:"animals/beaver.png", id:1 },
@@ -220,17 +205,22 @@ window.addEventListener('load', () => {
   function checkForWin() {
     if (numOfMatches === (cards.length) / 2) {
       const message = document.querySelector('#message')
+      confetti.start()
       message.innerHTML = "You Win!"
-      if (confirm("Play Again?")) {
-        numOfMatches = 0
-        cardsFlippedID = []
-        cardFlippedID1 = []
-        cardFlippedID2 = []
-        cardsFlippedIndex = []
-        deleteBoard()
-        createBoard()
-        message.innerHTML = ""
-      }
+
+       setTimeout( ()=> {
+         if (confirm("Play Again?")) {
+          numOfMatches = 0
+          cardsFlippedID = []
+          cardFlippedID1 = []
+          cardFlippedID2 = []
+          cardsFlippedIndex = []
+          deleteBoard()
+          createBoard()
+          message.innerHTML = ""
+          confetti.stop()
+        }
+       }, 2500 )
     }
   }
 
