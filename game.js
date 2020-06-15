@@ -260,6 +260,7 @@ function checkForWin(cardSet) {
   if (numOfMatches === (cardSet.length) / 2) {
     const message = document.querySelector('#message')
     const score = document.querySelector('#score')
+    const gameBoard = document.querySelector('.gameBoard')
     
     confetti.start()
     message.innerHTML = "You Win!"
@@ -276,6 +277,15 @@ function checkForWin(cardSet) {
         message.innerHTML = ""
         score.innerHTML = 0
         confetti.stop()
+        if (gridSize === 24) {
+          cards = document.querySelectorAll('.card')
+          cards.forEach(item => item.style.width = "15.65%")
+          gameBoard.style.maxWidth = "700px"
+        } else if (gridSize === 12) {
+          cards = document.querySelectorAll('.card')
+          cards.forEach(item => item.style.width = "23%")
+          gameBoard.style.maxWidth = "600px"
+        }
       }
       }, 2500 )
   }
