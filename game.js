@@ -64,7 +64,6 @@ let sizedCards = []             //new array, length based grid size
 let gridSize = 24               //either 12 or 24
 let currentColor = 'green'
 
-
 let numOfMatches = 0
 let cardsFlippedID = []
 let cardFlippedID1 = []
@@ -196,6 +195,8 @@ window.addEventListener('click', (e)=> {
 //after two cards are selected check for match
 function checkForMatch(index, cardSet) {
   const message = document.querySelector('#message')
+  const score = document.querySelector('#score')
+
   if (document.getElementById(index) !== null) {
     document.getElementById(index).style.pointerEvents = 'none'
   }
@@ -217,6 +218,7 @@ function checkForMatch(index, cardSet) {
       
       message.innerHTML = "Match"
       numOfMatches++
+      score.innerHTML = numOfMatches
       checkForWin(cardSet)
       cardsFlippedID = []
       cardFlippedID1 = []
@@ -251,6 +253,8 @@ function checkForMatch(index, cardSet) {
 function checkForWin(cardSet) {
   if (numOfMatches === (cardSet.length) / 2) {
     const message = document.querySelector('#message')
+    const score = document.querySelector('#score')
+    
     confetti.start()
     message.innerHTML = "You Win!"
 
@@ -264,6 +268,7 @@ function checkForWin(cardSet) {
         deleteBoard()
         createBoard(sizedCards)
         message.innerHTML = ""
+        score.innerHTML = 0
         confetti.stop()
       }
       }, 2500 )
