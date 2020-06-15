@@ -14,7 +14,7 @@ body {
 .header {
   width: 100vw;
   height: 50px;
-  background-color: #000;
+  background-color: #222;
   color: #fff;
   display: inline-flex;
   align-items: center;
@@ -77,7 +77,7 @@ body {
 
 .gameContainer {
   width: 100%;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 150px);
   background-image: url('images/backgrounds/animalCardsBG.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -103,4 +103,34 @@ body {
   width: 100%;
   border: 2px solid #000;
   border-radius: 15px;
+}
+
+.footer {
+  width: 100%;
+  height: 50px;
+  background-color: #222; 
+}
+
+.footerContainer {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.creditsText {
+  color: #fff;
+  padding-right: 16px;
+}
+
+.creditsLink {
+  width: 50%;
+  color: green;
+  text-decoration: none;
+  padding-left: 8px;
+}
+
+.creditsLink:hover {
+  color: lightgreen;
 }
