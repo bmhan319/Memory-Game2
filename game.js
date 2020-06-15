@@ -14,16 +14,16 @@ const animalCards = [
   { name:"elephant", src:"animals/elephant.png", id:6 },
   { name:"chicken", src:"animals/chicken.png", id:7 },
   { name:"chicken", src:"animals/chicken.png", id:7 },
-  { name:"chick", src:"animals/chick.png", id:8 },
-  { name:"chick", src:"animals/chick.png", id:8 },
-  { name:"dog", src:"animals/dog.png", id:9 },
-  { name:"dog", src:"animals/dog.png", id:9 },
+  { name:"polarbear", src:"animals/polarbear.png", id:8 },
+  { name:"polarbear", src:"animals/polarbear.png", id:8 },
+  { name:"walrus", src:"animals/walrus.png", id:9 },
+  { name:"walrus", src:"animals/walrus.png", id:9 },
   { name:"cow", src:"animals/cow.png", id:10 },
   { name:"cow", src:"animals/cow.png", id:10 },
   { name:"duck", src:"animals/duck.png", id:11 },
   { name:"duck", src:"animals/duck.png", id:11 },
-  { name:"cat", src:"animals/cat.png", id:12 },
-  { name:"cat", src:"animals/cat.png", id:12 }
+  { name:"pig", src:"animals/pig.png", id:12 },
+  { name:"pig", src:"animals/pig.png", id:12 }
 ]
 
 const dinoCards = [
