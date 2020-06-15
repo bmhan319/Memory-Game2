@@ -73,6 +73,8 @@ let cardsFlippedIndex = []
 
 //Create GameBoard
 function createBoard(cardSet) {
+  const message = document.querySelector('#message')
+  message.innerHTML = 'Good Luck!'
   shuffleArray(cardSet)
   for (let i = 0; i < cardSet.length; i++) {
     const gameBoard = document.querySelector('.gameBoard')
@@ -160,6 +162,7 @@ function changeTheme(theme, cardColor, index) {
 //On Page Load, load gameboard
 window.addEventListener('load', () => {
   createBoard(defaultCards)
+
 })
 
 
@@ -171,6 +174,7 @@ window.addEventListener('click', (e)=> {
   let card = parent.getAttribute('data-id')
   let cardID = parent.getAttribute('id')
   let cardItem
+  
   //When player clicks outside the gameboard, do nothing
   if (card == null) {
     return
@@ -191,6 +195,7 @@ window.addEventListener('click', (e)=> {
 
 //after two cards are selected check for match
 function checkForMatch(index, cardSet) {
+  const message = document.querySelector('#message')
   if (document.getElementById(index) !== null) {
     document.getElementById(index).style.pointerEvents = 'none'
   }
@@ -205,7 +210,6 @@ function checkForMatch(index, cardSet) {
 
     //if cards match, do something
     if (cardFlippedID1 === cardFlippedID2) {
-      const message = document.querySelector('#message')
       const selectedCards = document.querySelectorAll('.card' + cardFlippedID1)
       selectedCards.forEach( item => {
         item.style.pointerEvents = "none"
@@ -223,7 +227,6 @@ function checkForMatch(index, cardSet) {
     
     // else flip the cards back and reset container variables
     } else {
-      const message = document.querySelector('#message')
       message.innerHTML = "Not A Match"
       setTimeout( ()=>{
         if (currentColor === 'green') {
