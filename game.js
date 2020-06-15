@@ -323,3 +323,13 @@ function checkForWin(cardSet) {
       }, 2500 )
   }
 }
+
+function modalOpen() {
+  modal = document.querySelector('.modal')
+  modal.style.display = "flex"
+}
+
+function modalClose() {
+  modal = document.querySelector('.modal')
+  modal.style.display = "none"
+}
