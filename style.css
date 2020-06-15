@@ -50,6 +50,24 @@ body {
 .gridContainer,
 .themeContainer {
   width: 50%;
+  display: flex;
+  padding: 0 16px;
+  align-items: center;
+}
+
+.gridText,
+.themeText {
+  color: green;
+}
+
+.gridSize,
+.themeType {
+  width: 60px;
+  height: 30px;
+  border-radius: 0;
+  border: 0;
+  margin: 0 2px 0 10px;
+  box-shadow: 2px 2px 4px #888888;
 }
 
 .gameContainer {
@@ -74,9 +92,10 @@ body {
   margin: .5%;
   width: 15.65%;
   display: flex;
-  border: 2px solid #000;
 }
 
 .topCard {
   width: 100%;
+  border: 2px solid #000;
+  border-radius: 15px;
 }

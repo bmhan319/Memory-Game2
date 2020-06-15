@@ -9,20 +9,20 @@
 </head>
 <body>
   <header class="header">
-    <h2 class="memoryContainer">Memory</h2>
+    <h2 class="memoryContainer">Memory Game</h2>
     <h3 class="messageContainer">Message: <span id="message" class="message"></span></h3>
     <h3 class="scoreContainer">Score: <span id="score" class="score">0</span> of <span id="numOfPairs">12</span></h3>
   </header>
   <div class="gridType">
     <div class="gridContainer">
-      <h4>Select the game size:</h4>
-      <button type="button" onclick="gameSize(12)">4x3</button>
-      <button type="button" onclick="gameSize(24)">6x4</button>
+      <h4 class="gridText">Select the game size:</h4>
+      <button class="gridSize 4x3" type="button" onclick="gameSize(12)">4x3</button>
+      <button class="gridSize 6x4" type="button" onclick="gameSize(24)">6x4</button>
     </div>
     <div class="themeContainer">
-      <h4>Pic a Game Theme</h4>
-      <button type="button" onclick="changeTheme(animalCards, 'green', 0)">Animal</button>
-      <button type="button" onclick="changeTheme(dinoCards, 'red', 1)">Dinosaur</button>
+      <h4 class="themeText">Pic a Game Theme</h4>
+      <button class="themeType animals" type="button" onclick="changeTheme(animalCards, 'green', 0)">Animal</button>
+      <button class="themeType dinosaurs" type="button" onclick="changeTheme(dinoCards, 'red', 1)">Dinosaur</button>
     </div>
   </div>
   
