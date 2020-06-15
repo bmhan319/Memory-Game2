@@ -73,7 +73,10 @@ let cardsFlippedIndex = []
 //Create GameBoard
 function createBoard(cardSet) {
   const message = document.querySelector('#message')
+  const score = document.querySelector('#score')
   message.innerHTML = 'Good Luck!'
+  score.innerHTML = 0
+  numOfMatches = 0
   shuffleArray(cardSet)
   for (let i = 0; i < cardSet.length; i++) {
     const gameBoard = document.querySelector('.gameBoard')
