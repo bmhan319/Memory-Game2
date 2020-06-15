@@ -118,6 +118,7 @@ function shuffleArray(array) {
 //outputs array that is 12 or 24
 function gameSize(num) {
   const gameBoard = document.querySelector('.gameBoard')
+  const numOfPairs = document.querySelector('#numOfPairs')
   let cards
 
   sizedCards = []
@@ -129,8 +130,10 @@ function gameSize(num) {
     defaultCards.forEach ( item => {if (item.id < 7 ) {sizedCards.push(item)}} )
     
   }
+  
   deleteBoard()
   createBoard(sizedCards)
+  numOfPairs.innerHTML = num / 2
   
   //Adjusting the CSS sizing AFTER the  new board is created
   if (num === 24) {
