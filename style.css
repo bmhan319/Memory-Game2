@@ -6,6 +6,7 @@
 }
 
 body {
+  position: relative;
   width: 100vw;
   height: 100%;
   background-color: #ccc;
@@ -53,6 +54,10 @@ body {
   display: flex;
   padding: 0 16px;
   align-items: center;
+}
+
+.themeContainer {
+  justify-content: end;
 }
 
 .gridText,
@@ -133,4 +138,28 @@ body {
 
 .creditsLink:hover {
   color: lightgreen;
+}
+
+.modal {
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid #000;
+  background-color: #ccc;
+  display: none;
+}
+
+.modalContainer {
+  width: 100%;
+}
+
+.credits {
+  text-align: center;
+}
+
+.modalText {
+  text-align: center;
 }

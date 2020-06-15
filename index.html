@@ -20,9 +20,10 @@
       <button class="gridSize 6x4" type="button" onclick="gameSize(24)">6x4</button>
     </div>
     <div class="themeContainer">
-      <h4 class="themeText">Pic a Game Theme</h4>
+      <h4 class="themeText">Pick a Game Theme</h4>
       <button class="themeType animals" type="button" onclick="changeTheme(animalCards, 'green', 0)">Animal</button>
       <button class="themeType dinosaurs" type="button" onclick="changeTheme(dinoCards, 'red', 1)">Dinosaur</button>
+      <button class="themeType ocean" type="button" onclick="changeTheme(oceanCards, 'blue', 2)">Ocean</button>
     </div>
   </div>
   
@@ -32,10 +33,18 @@
 
   <footer id="footer" class="footer">
     <div class="footerContainer">
-      <h3 class="creditsText">Credits:<a class="creditsLink" href="#">Click</a></h3>
+      <h3 class="creditsText"><a class="creditsLink" href="#">Credits</a></h3>
       
     </div>
   </footer>
+
+  <modal class="modal">
+    <div class="modalContainer">
+      <h1 class="credits">Credits</h1>
+      <p class="modalText">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora vel recusandae quo dolor voluptatibus dicta nostrum, repellendus, eius odio accusantium officiis cupiditate excepturi dolorum voluptates iste aliquid quos. Cumque, doloribus.</p>
+    </div>
+  </modal>
+
 <script src="https://cdn.jsdelivr.net/gh/mathusummut/confetti.js/confetti.min.js"></script>
 </body>
 <script src="game.js"></script>

@@ -53,9 +53,37 @@ const dinoCards = [
   { name:"volcano", src:"dinosaurs/volcano.png", id:12 }
 ]
 
+const oceanCards = [
+  { name:"anglerfish", src:"ocean/anglerfish.png", id:1 },
+  { name:"anglerfish", src:"ocean/anglerfish.png", id:1 },
+  { name:"clam", src:"ocean/clam.png", id:2 },
+  { name:"clam", src:"ocean/clam.png", id:2 },
+  { name:"coral", src:"ocean/coral.png", id:3 },
+  { name:"coral", src:"ocean/coral.png", id:3 },
+  { name:"hermitcrab", src:"ocean/hermitcrab.png", id:4 },
+  { name:"hermitcrab", src:"ocean/hermitcrab.png", id:4 },
+  { name:"eel", src:"ocean/eel.png", id:5 },
+  { name:"eel", src:"ocean/eel.png", id:5 },
+  { name:"jellyfish", src:"ocean/jellyfish.png", id:6 },
+  { name:"jellyfish", src:"ocean/jellyfish.png", id:6 },
+  { name:"octopus", src:"ocean/octopus.png", id:7 },
+  { name:"octopus", src:"ocean/octopus.png", id:7 },
+  { name:"seahorse", src:"ocean/seahorse.png", id:8 },
+  { name:"seahorse", src:"ocean/seahorse.png", id:8 },
+  { name:"shark", src:"ocean/shark.png", id:9 },
+  { name:"shark", src:"ocean/shark.png", id:9 },
+  { name:"starfish", src:"ocean/starfish.png", id:10 },
+  { name:"starfish", src:"ocean/starfish.png", id:10 },
+  { name:"turtle", src:"ocean/turtle.png", id:11 },
+  { name:"turtle", src:"ocean/turtle.png", id:11 },
+  { name:"crab", src:"ocean/crab.png", id:12 },
+  { name:"crab", src:"ocean/crab.png", id:12 }
+]
+
 const backgrounds = [
   {backOfCard: 'blank_green.jpg', bg:'animalCardsBG.jpg'},
-  {backOfCard: 'blank_red.png', bg:'dinoCardsBG.jpg'}
+  {backOfCard: 'blank_red.png', bg:'dinoCardsBG.jpg'},
+  {backOfCard: 'blank_blue.jpg', bg:'oceanCardsBG.jpg'}
 ]
 
 //container variables to store data of each move
@@ -83,8 +111,10 @@ function createBoard(cardSet) {
     let topCard = document.createElement('div')
     if (currentColor == 'green') {
       topCard.innerHTML = '<img class="topCard" src="/images/backCards/blank_green.jpg" alt="top of card">'
-    } else {
+    } else if (currentColor == 'red') {
       topCard.innerHTML = '<img class="topCard" src="/images/backCards/blank_red.png" alt="top of card">'
+    } else if (currentColor == 'blue') {
+      topCard.innerHTML = '<img class="topCard" src="/images/backCards/blank_blue.jpg" alt="top of card">'
     }
     topCard.setAttribute("data-id", cardSet[i].id)
     topCard.setAttribute("class", "card card"+cardSet[i].id)
@@ -240,9 +270,12 @@ function checkForMatch(index, cardSet) {
         if (currentColor === 'green') {
           firstSelected[0].setAttribute('src', "/images/backCards/blank_green.jpg")
           secondSelected[0].setAttribute('src', "/images/backCards/blank_green.jpg")
-        } else {
+        } else if(currentColor === 'red') {
           firstSelected[0].setAttribute('src', "/images/backCards/blank_red.png")
           secondSelected[0].setAttribute('src', "/images/backCards/blank_red.png")
+        } else if (currentColor === 'blue') {
+          firstSelected[0].setAttribute('src', "/images/backCards/blank_blue.jpg")
+          secondSelected[0].setAttribute('src', "/images/backCards/blank_blue.jpg")
         }
         stopClick.style.pointerEvents ="auto"
       }, 500 )
