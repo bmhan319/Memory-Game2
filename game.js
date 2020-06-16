@@ -326,10 +326,15 @@ function checkForWin(cardSet) {
 
 function modalOpen() {
   modal = document.querySelector('.modal')
-  modal.style.display = "flex"
+  modalContainer = document.querySelector('.modalContainer ')
+  modal.classList.add('modalOpen')
+  modalContainer.classList.add('modalContainerOpen')
+  modal.style.zIndex = "0"
 }
 
 function modalClose() {
   modal = document.querySelector('.modal')
-  modal.style.display = "none"
+  modalContainer = document.querySelector('.modalContainer ')
+  modalContainer.classList.remove('modalContainerOpen')
+  modal.classList.remove('modalOpen')
 }
