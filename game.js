@@ -120,6 +120,7 @@ function createBoard(cardSet) {
     topCard.setAttribute("class", "card card"+cardSet[i].id)
     topCard.setAttribute("id", i)
     gameBoard.appendChild(topCard)
+    timer()
   }
 }
 
@@ -273,7 +274,7 @@ function checkForMatch(index, cardSet) {
     
     // else flip the cards back and reset container variables
     } else {
-      message.innerHTML = "Not A Match"
+      message.innerHTML = "Not a match"
       setTimeout( ()=>{
         if (currentColor === 'green') {
           firstSelected[0].setAttribute('src', "/images/backCards/blank_green.jpg")
@@ -346,3 +347,50 @@ function modalClose() {
   modalContainer.classList.remove('modalContainerOpen')
   modal.classList.remove('modalOpen')
 }
+
+function timer(){
+  let totalTime = 0
+  let min = 0
+  let sec = 0
+  let displayMin = '00'
+  let displaySec = '00'
+  let displayTime = document.querySelector('.time')
+  
+  
+
+  let timer = setInterval(function() {
+    totalTime++
+    sec = totalTime
+    displaySec = sec
+
+    if (totalTime % 60 === 0) {
+      min++
+    }
+
+    if (totalTime >= 60) {
+      sec = totalTime - (60 * min)
+    }
+
+    if (sec < 10) {
+      displaySec = "0" + sec
+    } else if (sec >= 10 && sec < 60) {
+      displaySec = sec
+    } 
+
+    if (min > 0 && min < 10) {
+      displayMin = '0' + min
+    } else if (min > 10 && min < 60) {
+      displayMin = min
+    }
+
+    displayTime.innerHTML = displayMin + ':' + displaySec
+    
+    if (sec === 10) {
+      //clearInterval(timer)
+      //alert("Time's Up!")
+
+    }
+  }, 1000)
+
+}
+
