@@ -349,7 +349,7 @@ function modalClose() {
 }
 
 function timerDisplay(startNum){
-  let totalTime = 0
+  let totalTime = -1
   let min = 0
   let sec = 0
   let displayMin = startNum
@@ -363,7 +363,7 @@ function timerDisplay(startNum){
     sec = totalTime
     displaySec = sec
 
-    if (totalTime % 60 === 0) {
+    if (totalTime % 60 === 0 && totalTime > 0) {
       min++
     }
 
