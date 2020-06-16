@@ -81,9 +81,9 @@ const oceanCards = [
 ]
 
 const backgrounds = [
-  {backOfCard: 'blank_green.jpg', bg:'animalCardsBG.jpg'},
-  {backOfCard: 'blank_red.png', bg:'dinoCardsBG.jpg'},
-  {backOfCard: 'blank_blue.jpg', bg:'oceanCardsBG.jpg'}
+  {backOfCard: 'blank_green.jpg', bg:'animalCardsBG.jpg', color:"green"},
+  {backOfCard: 'blank_red.png', bg:'dinoCardsBG.jpg', color: 'red'},
+  {backOfCard: 'blank_blue.jpg', bg:'oceanCardsBG.jpg', color: '#0095C7'}
 ]
 
 //container variables to store data of each move
@@ -194,6 +194,8 @@ function changeTheme(theme, cardColor, index) {
     currentColor = cardColor
     defaultCards = theme
     document.querySelector('.gameContainer').style.backgroundImage = `url('images/backgrounds/${backgrounds[index].bg}')`
+    document.querySelector('.gridText').style.color = backgrounds[index].color
+    document.querySelector('.themeText').style.color = backgrounds[index].color
     gameSize(gridSize)
   }
 }
