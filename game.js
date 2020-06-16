@@ -148,7 +148,7 @@ function shuffleArray(array) {
 }
 
 //select game board size
-//outputs array that is 12 or 24
+//outputs array that is 12, 20 or 24
 function gameSize(num) {
   const gameBoard = document.querySelector('.gameBoard')
   const numOfPairs = document.querySelector('#numOfPairs')
@@ -162,6 +162,8 @@ function gameSize(num) {
   } else if (num === 12) {
     defaultCards.forEach ( item => {if (item.id < 7 ) {sizedCards.push(item)}} )
     
+  } else if (num === 20) {
+    defaultCards.forEach ( item => {if (item.id < 11 ) {sizedCards.push(item)}} )
   }
   
   deleteBoard()
@@ -171,11 +173,15 @@ function gameSize(num) {
   //Adjusting the CSS sizing AFTER the  new board is created
   if (num === 24) {
     cards = document.querySelectorAll('.card')
-    cards.forEach(item => item.style.width = "15.65%")
+    cards.forEach(item => item.style.width = "16.66667%")
     gameBoard.style.maxWidth = "700px"
   } else if (num === 12) {
     cards = document.querySelectorAll('.card')
-    cards.forEach(item => item.style.width = "23%")
+    cards.forEach(item => item.style.width = "25%")
+    gameBoard.style.maxWidth = "600px"
+  } else if (num === 20) {
+    cards = document.querySelectorAll('.card')
+    cards.forEach(item => item.style.width = "20%")
     gameBoard.style.maxWidth = "600px"
   }
 }

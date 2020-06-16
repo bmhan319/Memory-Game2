@@ -93,14 +93,14 @@ body {
   width: 60vw;
   max-width: 700px;
   margin: 0 auto;
-  padding: 24px 0;
+  padding-top: 24px;
   display: flex;
   flex-wrap: wrap;
 }
 
 .card {
-  margin: .5%;
-  width: 15.65%;
+  padding: 3px;
+  width: 16.66667%;
   display: flex;
 }
 
