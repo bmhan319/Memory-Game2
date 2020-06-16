@@ -86,11 +86,13 @@ const backgrounds = [
   {backOfCard: 'blank_blue.jpg', bg:'oceanCardsBG.jpg', color: '#0095C7'}
 ]
 
+const gameBoard = document.querySelector('.gameBoard')
 //container variables to store data of each move
 let defaultCards = animalCards  //default selection
 let sizedCards = []             //new array, length based grid size
 let gridSize = 24               //either 12 or 24
 let currentColor = 'green'
+let timer
 
 let numOfMatches = 0
 let cardsFlippedID = []
@@ -107,7 +109,6 @@ function createBoard(cardSet) {
   numOfMatches = 0
   shuffleArray(cardSet)
   for (let i = 0; i < cardSet.length; i++) {
-    const gameBoard = document.querySelector('.gameBoard')
     let topCard = document.createElement('div')
     if (currentColor == 'green') {
       topCard.innerHTML = '<img class="topCard" src="/images/backCards/blank_green.jpg" alt="top of card">'
@@ -119,14 +120,14 @@ function createBoard(cardSet) {
     topCard.setAttribute("data-id", cardSet[i].id)
     topCard.setAttribute("class", "card card"+cardSet[i].id)
     topCard.setAttribute("id", i)
+    clearInterval(timer)
     gameBoard.appendChild(topCard)
-    timer()
+    timerDisplay('00')
   }
 }
 
 //Delete GameBoard
 function deleteBoard() {
-  const gameBoard = document.querySelector('.gameBoard')
   while (gameBoard.firstChild) {
     gameBoard.removeChild(gameBoard.firstChild)
   }
@@ -151,13 +152,12 @@ function shuffleArray(array) {
 //select game board size
 //outputs array that is 12, 20 or 24
 function gameSize(num) {
-  const gameBoard = document.querySelector('.gameBoard')
   const numOfPairs = document.querySelector('#numOfPairs')
   let cards
 
   sizedCards = []
   gridSize = num
-
+  
   if (num === 24) {
     defaultCards.forEach( item => {sizedCards.push(item)} )
   } else if (num === 12) {
@@ -206,7 +206,6 @@ function changeTheme(theme, cardColor, index) {
 //On Page Load, load gameboard
 window.addEventListener('load', () => {
   createBoard(defaultCards)
-
 })
 
 
@@ -306,6 +305,7 @@ function checkForWin(cardSet) {
     
     confetti.start()
     message.innerHTML = "You Win!"
+    clearInterval(timer)
 
       setTimeout( ()=> {
         if (confirm("Play Again?")) {
@@ -348,17 +348,17 @@ function modalClose() {
   modal.classList.remove('modalOpen')
 }
 
-function timer(){
+function timerDisplay(startNum){
   let totalTime = 0
   let min = 0
   let sec = 0
-  let displayMin = '00'
-  let displaySec = '00'
+  let displayMin = startNum
+  let displaySec = startNum
   let displayTime = document.querySelector('.time')
   
   
 
-  let timer = setInterval(function() {
+  timer = setInterval(function() {
     totalTime++
     sec = totalTime
     displaySec = sec
@@ -385,9 +385,9 @@ function timer(){
 
     displayTime.innerHTML = displayMin + ':' + displaySec
     
-    if (sec === 10) {
-      //clearInterval(timer)
-      //alert("Time's Up!")
+    if (min === 30) {
+      clearInterval(Vtimer)
+      alert("Time's Up!")
 
     }
   }, 1000)
