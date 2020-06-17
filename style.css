@@ -108,18 +108,18 @@ body {
   color: #ccc;
   text-shadow: 2px 2px #333;
   font-size: 1rem;
-  transform: scale(1);
+  transform: scale(4);
   opacity: 0;
   z-index: 10;
 }
 
 .messageAEnd {
-  animation: zoom .5s linear 1,
+  animation: zoom 1s linear 1,
              opacity .25s linear 1;
 }
 
 @keyframes zoom {
-  from {transform: scale(1)}
+  from {transform: scale(4)}
   to {transform: scale(25)}
 }
 

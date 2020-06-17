@@ -261,7 +261,6 @@ function checkForMatch(index, cardSet) {
         item.style.pointerEvents = "none"
       } )
       
-      //message.innerHTML = "Match"
       messageA.innerHTML = "Match"
       numOfMatches++
       score.innerHTML = numOfMatches
@@ -276,9 +275,7 @@ function checkForMatch(index, cardSet) {
       }, 500)
       
       messageA.classList.add('messageAEnd')
-    // else flip the cards back and reset container variables
     } else {
-      //message.innerHTML = "Not a match"
       setTimeout( ()=>{
         if (currentColor === 'green') {
           firstSelected[0].setAttribute('src', "/images/backCards/blank_green.jpg")
@@ -309,7 +306,7 @@ function checkForWin(cardSet) {
     const gameBoard = document.querySelector('.gameBoard')
     
     confetti.start()
-    message.innerHTML = "You Win!"
+    messageA.innerHTML = "You Win!"
     clearInterval(timer)
 
       setTimeout( ()=> {
@@ -326,12 +323,16 @@ function checkForWin(cardSet) {
         confetti.stop()
         if (gridSize === 24) {
           cards = document.querySelectorAll('.card')
-          cards.forEach(item => item.style.width = "15.65%")
-          gameBoard.style.maxWidth = "700px"
+          cards.forEach(item => item.style.width = "16.666667%")
+          gameBoard.style.maxWidth = "600px"
         } else if (gridSize === 12) {
           cards = document.querySelectorAll('.card')
-          cards.forEach(item => item.style.width = "23%")
-          gameBoard.style.maxWidth = "600px"
+          cards.forEach(item => item.style.width = "25%")
+          gameBoard.style.maxWidth = "450px"
+        } else if (num === 20) {
+          cards = document.querySelectorAll('.card')
+          cards.forEach(item => item.style.width = "20%")
+          gameBoard.style.maxWidth = "500px"
         }
       }
       }, 2500 )
