@@ -329,7 +329,7 @@ function checkForWin(cardSet) {
           cards = document.querySelectorAll('.card')
           cards.forEach(item => item.style.width = "25%")
           gameBoard.style.maxWidth = "450px"
-        } else if (num === 20) {
+        } else if (gridSize === 20) {
           cards = document.querySelectorAll('.card')
           cards.forEach(item => item.style.width = "20%")
           gameBoard.style.maxWidth = "500px"
