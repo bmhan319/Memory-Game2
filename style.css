@@ -87,6 +87,9 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top; 
+  display: flex;
+  align-items: flex-start;
+  padding-top: 48px;
 }
 
 .gameBoard {
@@ -94,7 +97,6 @@ body {
   max-width: 600px;
   max-height:calc(100vh - 150px);
   margin: 0 auto;
-  padding: 24px 0;
   display: flex;
   flex-wrap: wrap;
   position: relative;
