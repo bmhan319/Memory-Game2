@@ -104,7 +104,7 @@ let cardsFlippedIndex = []
 function createBoard(cardSet) {
   const message = document.querySelector('#message')
   const score = document.querySelector('#score')
-  message.innerHTML = 'Good Luck!'
+  //message.innerHTML = 'Good Luck!'
   score.innerHTML = 0
   numOfMatches = 0
   shuffleArray(cardSet)
@@ -261,7 +261,7 @@ function checkForMatch(index, cardSet) {
         item.style.pointerEvents = "none"
       } )
       
-      message.innerHTML = "Match"
+      //message.innerHTML = "Match"
       messageA.innerHTML = "Match"
       numOfMatches++
       score.innerHTML = numOfMatches
@@ -271,12 +271,14 @@ function checkForMatch(index, cardSet) {
       cardFlippedID2 = []
       cardsFlippedIndex = []
       stopClick.style.pointerEvents ="auto"
+      setTimeout( ()=> {
+        messageA.classList.remove('messageAEnd')
+      }, 500)
       
       messageA.classList.add('messageAEnd')
-      messageA.classList.remove('messageAStart')
     // else flip the cards back and reset container variables
     } else {
-      message.innerHTML = "Not a match"
+      //message.innerHTML = "Not a match"
       setTimeout( ()=>{
         if (currentColor === 'green') {
           firstSelected[0].setAttribute('src', "/images/backCards/blank_green.jpg")

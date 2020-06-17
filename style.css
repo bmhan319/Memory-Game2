@@ -118,11 +118,6 @@ body {
              opacity .25s linear 1;
 }
 
-.messageA:hover {
-  animation: zoom .25s linear 1,
-             opacity .25s linear 1;
-}
-
 @keyframes zoom {
   from {transform: scale(1)}
   to {transform: scale(25)}
