@@ -281,3 +281,18 @@ body {
 .creditLink:hover {
   color: green;
 }
+
+.playAgain{
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  background-color: ;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 10px solid green;
+  border-radius: 15px;
+  background-image: url('/images/backgrounds/greenTexture.jpg');
+  background-color: #959E27;
+  display: none;
+}

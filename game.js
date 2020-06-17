@@ -310,7 +310,8 @@ function checkForWin(cardSet) {
     clearInterval(timer)
 
       setTimeout( ()=> {
-        if (confirm("Play Again?")) {
+        //if (confirm("Play Again?")) {
+        playAgain()
         numOfMatches = 0
         cardsFlippedID = []
         cardFlippedID1 = []
@@ -334,7 +335,7 @@ function checkForWin(cardSet) {
           cards.forEach(item => item.style.width = "20%")
           gameBoard.style.maxWidth = "500px"
         }
-      }
+      //}
       }, 2500 )
   }
 }
@@ -398,5 +399,9 @@ function timerDisplay(startNum){
     }
   }, 1000)
 
+}
+
+function playAgain() {
+  document.querySelector('.playAgain').style.display = "block"
 }
 
