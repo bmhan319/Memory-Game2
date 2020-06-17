@@ -175,15 +175,15 @@ function gameSize(num) {
   if (num === 24) {
     cards = document.querySelectorAll('.card')
     cards.forEach(item => item.style.width = "16.66667%")
-    gameBoard.style.maxWidth = "700px"
+    gameBoard.style.maxWidth = "600px"
   } else if (num === 12) {
     cards = document.querySelectorAll('.card')
     cards.forEach(item => item.style.width = "25%")
-    gameBoard.style.maxWidth = "600px"
+    gameBoard.style.maxWidth = "450px"
   } else if (num === 20) {
     cards = document.querySelectorAll('.card')
     cards.forEach(item => item.style.width = "20%")
-    gameBoard.style.maxWidth = "600px"
+    gameBoard.style.maxWidth = "500px"
   }
 }
 
@@ -247,6 +247,7 @@ function checkForMatch(index, cardSet) {
 
   if (cardsFlippedID.length === 2) {
     const stopClick = document.querySelector('.gameBoard')
+    let messageA = document.getElementById('messageA')
     let firstSelected = document.getElementById(index[0]).children
     let secondSelected = document.getElementById(index[1]).children
     stopClick.style.pointerEvents ="none"
@@ -261,6 +262,7 @@ function checkForMatch(index, cardSet) {
       } )
       
       message.innerHTML = "Match"
+      messageA.innerHTML = "Match"
       numOfMatches++
       score.innerHTML = numOfMatches
       checkForWin(cardSet)
@@ -270,7 +272,8 @@ function checkForMatch(index, cardSet) {
       cardsFlippedIndex = []
       stopClick.style.pointerEvents ="auto"
       
-    
+      messageA.classList.add('messageAEnd')
+      messageA.classList.remove('messageAStart')
     // else flip the cards back and reset container variables
     } else {
       message.innerHTML = "Not a match"

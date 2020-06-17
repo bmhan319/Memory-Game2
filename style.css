@@ -91,12 +91,48 @@ body {
 
 .gameBoard {
   width: 80vw;
-  max-width: 700px;
+  max-width: 600px;
+  max-height:calc(100vh - 150px);
   margin: 0 auto;
-  padding-top: 24px;
+  padding: 24px 0;
   display: flex;
   flex-wrap: wrap;
+  position: relative;
 }
+
+.messageA {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ccc;
+  text-shadow: 2px 2px #333;
+  font-size: 1rem;
+  transform: scale(1);
+  opacity: 0;
+  z-index: 10;
+}
+
+.messageAEnd {
+  animation: zoom .5s linear 1,
+             opacity .25s linear 1;
+}
+
+.messageA:hover {
+  animation: zoom .25s linear 1,
+             opacity .25s linear 1;
+}
+
+@keyframes zoom {
+  from {transform: scale(1)}
+  to {transform: scale(25)}
+}
+
+@keyframes opacity {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
 
 .card {
   padding: 3px;
