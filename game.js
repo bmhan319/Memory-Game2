@@ -199,6 +199,8 @@ function changeTheme(theme, cardColor, index) {
     document.querySelector('.gridText').style.color = backgrounds[index].color
     document.querySelector('.themeText').style.color = backgrounds[index].color
     document.querySelector('.creditsLink').style.color = backgrounds[index].color
+    document.querySelectorAll('.gridSize').forEach(item => item.style.backgroundColor = backgrounds[index].color)
+    document.querySelectorAll('.themeType').forEach(item => item.style.backgroundColor = backgrounds[index].color)
     gameSize(gridSize)
   }
 }

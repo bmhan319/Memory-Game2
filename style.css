@@ -72,7 +72,9 @@ body {
   border-radius: 0;
   border: 0;
   margin: 0 2px 0 10px;
-  box-shadow: 2px 2px 4px #888888;
+  box-shadow: 2px 2px 2px #333333;
+  background-color: green;
+  color: #fff;
 }
 
 .gridSize:active,
