@@ -82,7 +82,7 @@ const oceanCards = [
 
 const backgrounds = [
   {backOfCard: 'blank_green.jpg', bg:'animalCardsBG.jpg', color:"green"},
-  {backOfCard: 'blank_red.png', bg:'dinoCardsBG.jpg', color: 'red'},
+  {backOfCard: 'blank_red.jpg', bg:'dinoCardsBG.jpg', color: 'red'},
   {backOfCard: 'blank_blue.jpg', bg:'oceanCardsBG.jpg', color: '#0095C7'}
 ]
 
@@ -113,7 +113,7 @@ function createBoard(cardSet) {
     if (currentColor == 'green') {
       topCard.innerHTML = '<img class="topCard" src="/images/backCards/blank_green.jpg" alt="top of card">'
     } else if (currentColor == 'red') {
-      topCard.innerHTML = '<img class="topCard" src="/images/backCards/blank_red.png" alt="top of card">'
+      topCard.innerHTML = '<img class="topCard" src="/images/backCards/blank_red.jpg" alt="top of card">'
     } else if (currentColor == 'blue') {
       topCard.innerHTML = '<img class="topCard" src="/images/backCards/blank_blue.jpg" alt="top of card">'
     }
@@ -236,16 +236,13 @@ window.addEventListener('click', (e)=> {
     cardsFlippedID.push(card)
     cardsFlippedIndex.push(cardID)
     checkForMatch(cardsFlippedIndex, cards)
-    el.classList.add('flipOn')
-    el.classList.remove('flipOff')
-    setTimeout( function(){el.setAttribute("src", `/images/${cardItem}`)}, 250 )
+    flipCard(el, cardItem)
   }
   
 })
 
 //after two cards are selected check for match
 function checkForMatch(index, cardSet) {
-  const message = document.querySelector('#message')
   const score = document.querySelector('#score')
 
   if (document.getElementById(index) !== null) {
@@ -282,28 +279,15 @@ function checkForMatch(index, cardSet) {
       }, 500)
       
       messageA.classList.add('messageAEnd')
-    } else {
-      
-      setTimeout( ()=>{
-        firstSelected[0].classList.add('flipOff')
-        secondSelected[0].classList.add('flipOff')
-        firstSelected[0].classList.remove('flipOn')
-        secondSelected[0].classList.remove('flipOn')
-
-        setTimeout( ()=> {
-          if (currentColor === 'green') {
-            firstSelected[0].setAttribute('src', "/images/backCards/blank_green.jpg")
-            secondSelected[0].setAttribute('src', "/images/backCards/blank_green.jpg")
-          } else if(currentColor === 'red') {
-            firstSelected[0].setAttribute('src', "/images/backCards/blank_red.png")
-            secondSelected[0].setAttribute('src', "/images/backCards/blank_red.png")
-          } else if (currentColor === 'blue') {
-            firstSelected[0].setAttribute('src', "/images/backCards/blank_blue.jpg")
-            secondSelected[0].setAttribute('src', "/images/backCards/blank_blue.jpg")
-          }
-        }, 250)
+    } else if (cardFlippedID1 !== cardFlippedID2) {
+      //if card dont match
+      //setTimeout( function(){item1.setAttribute("src", `/images/${item2}`)}, 250 )
+      setTimeout(()=> {
+        flipCardBack(firstSelected[0], currentColor)
+        flipCardBack(secondSelected[0], currentColor)
         stopClick.style.pointerEvents ="auto"
-      },500 )
+        console.log(currentColor)
+      }, 700)
       document.getElementById(cardsFlippedIndex[0]).style.pointerEvents = 'auto'
       cardsFlippedID = []
       cardFlippedID1 = []
@@ -425,4 +409,20 @@ function playAgain(res) {
   } else {
     document.querySelector('.winnerPlayAgain').style.display = "none"
   }
+}
+
+function flipCard(item1, item2) {
+  item1.classList.add('flipOn')
+  item1.classList.remove('flipOff')
+  setTimeout( function(){
+    item1.setAttribute("src", `/images/${item2}`)
+  }, 250 )
+}
+
+function flipCardBack(element, color) {
+  element.classList.add('flipOff')
+  element.classList.remove('flipOn')
+  setTimeout( function(){
+    element.setAttribute("src", `/images/backCards/blank_${color}.jpg`)
+  }, 250 )
 }
