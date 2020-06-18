@@ -120,12 +120,12 @@ body {
 .messageAEnd {
   z-index: 10;
   animation: zoom 1s linear 1,
-             opacity .25s linear 1;
+             opacity 1s linear 1;
 }
 
 @keyframes zoom {
-  from {transform: scale(4)}
-  to {transform: scale(25)}
+  0% {transform: scale(4)}
+  100% {transform: scale(25)}
 }
 
 @keyframes opacity {

@@ -102,12 +102,13 @@ let cardsFlippedIndex = []
 
 //Create GameBoard
 function createBoard(cardSet) {
-  const message = document.querySelector('#message')
+  const message = '<h3 id="messageA" class="messageA">Match</h3>'
   const score = document.querySelector('#score')
   //message.innerHTML = 'Good Luck!'
   score.innerHTML = 0
   numOfMatches = 0
   shuffleArray(cardSet)
+  gameBoard.innerHTML = message
   for (let i = 0; i < cardSet.length; i++) {
     let topCard = document.createElement('div')
     if (currentColor == 'green') {
