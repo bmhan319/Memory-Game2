@@ -123,6 +123,7 @@ function createBoard(cardSet) {
     clearInterval(timer)
     gameBoard.appendChild(topCard)
     timerDisplay('00')
+    confetti.stop()
   }
 }
 
