@@ -310,32 +310,8 @@ function checkForWin(cardSet) {
     clearInterval(timer)
 
       setTimeout( ()=> {
-        //if (confirm("Play Again?")) {
-        playAgain()
-        numOfMatches = 0
-        cardsFlippedID = []
-        cardFlippedID1 = []
-        cardFlippedID2 = []
-        cardsFlippedIndex = []
-        deleteBoard()
-        createBoard(sizedCards)
-        message.innerHTML = ""
-        score.innerHTML = 0
-        confetti.stop()
-        if (gridSize === 24) {
-          cards = document.querySelectorAll('.card')
-          cards.forEach(item => item.style.width = "16.666667%")
-          gameBoard.style.maxWidth = "600px"
-        } else if (gridSize === 12) {
-          cards = document.querySelectorAll('.card')
-          cards.forEach(item => item.style.width = "25%")
-          gameBoard.style.maxWidth = "450px"
-        } else if (gridSize === 20) {
-          cards = document.querySelectorAll('.card')
-          cards.forEach(item => item.style.width = "20%")
-          gameBoard.style.maxWidth = "500px"
-        }
-      //}
+        askPlayAgain()
+        
       }, 2500 )
   }
 }
@@ -393,7 +369,7 @@ function timerDisplay(startNum){
     displayTime.innerHTML = displayMin + ':' + displaySec
     
     if (min === 30) {
-      clearInterval(Vtimer)
+      clearInterval(timer)
       alert("Time's Up!")
 
     }
@@ -401,7 +377,37 @@ function timerDisplay(startNum){
 
 }
 
-function playAgain() {
-  document.querySelector('.playAgain').style.display = "block"
+function askPlayAgain() {
+  document.querySelector('.winnerPlayAgain').style.display = "block"
 }
 
+function playAgain(res) {
+  if (res === 'yes') {
+    document.querySelector('.winnerPlayAgain').style.display = "none"
+    numOfMatches = 0
+    cardsFlippedID = []
+    cardFlippedID1 = []
+    cardFlippedID2 = []
+    cardsFlippedIndex = []
+    deleteBoard()
+    createBoard(sizedCards)
+    message.innerHTML = ""
+    score.innerHTML = 0
+    confetti.stop()
+    if (gridSize === 24) {
+      cards = document.querySelectorAll('.card')
+      cards.forEach(item => item.style.width = "16.666667%")
+      gameBoard.style.maxWidth = "600px"
+    } else if (gridSize === 12) {
+      cards = document.querySelectorAll('.card')
+      cards.forEach(item => item.style.width = "25%")
+      gameBoard.style.maxWidth = "450px"
+    } else if (gridSize === 20) {
+      cards = document.querySelectorAll('.card')
+      cards.forEach(item => item.style.width = "20%")
+      gameBoard.style.maxWidth = "500px"
+    }
+  } else {
+    document.querySelector('.winnerPlayAgain').style.display = "none"
+  }
+}

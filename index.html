@@ -71,10 +71,18 @@
       </div>
     </div>
   </modal>
-  <div class="playAgain">
-    <h3>You Won!</h3>
-    <p>Your time was:<span>00:00</span></p>
+  <div class="winnerPlayAgain">
+    <div class="winnerTextContainer">
+      <div class="winnerTitleContainer">
+        <h3 class="winnerStatement">Winner Winner Chicken Dinner!</h3>
+      <p class="winnerAsk">Wanna play again?</p>
+      </div>
+      <div class="winnerButtonContainer">
+        <button onclick="playAgain('no')" class="winnerDone">Nah, I'm Done.</button>
+        <button onclick="playAgain('yes')" class="winnerAgain">OK. Play again.</button>
+      </div>
     </div>
+  </div>
 
 <script src="https://cdn.jsdelivr.net/gh/mathusummut/confetti.js/confetti.min.js"></script>
 </body>
