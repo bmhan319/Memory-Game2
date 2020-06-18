@@ -235,9 +235,12 @@ window.addEventListener('click', (e)=> {
     cardItem = cards[cardID].src
     cardsFlippedID.push(card)
     cardsFlippedIndex.push(cardID)
-    el.setAttribute("src", `/images/${cardItem}`)
     checkForMatch(cardsFlippedIndex, cards)
+    el.classList.add('flipOn')
+    el.classList.remove('flipOff')
+    setTimeout( function(){el.setAttribute("src", `/images/${cardItem}`)}, 250 )
   }
+  
 })
 
 //after two cards are selected check for match
@@ -280,19 +283,27 @@ function checkForMatch(index, cardSet) {
       
       messageA.classList.add('messageAEnd')
     } else {
+      
       setTimeout( ()=>{
-        if (currentColor === 'green') {
-          firstSelected[0].setAttribute('src', "/images/backCards/blank_green.jpg")
-          secondSelected[0].setAttribute('src', "/images/backCards/blank_green.jpg")
-        } else if(currentColor === 'red') {
-          firstSelected[0].setAttribute('src', "/images/backCards/blank_red.png")
-          secondSelected[0].setAttribute('src', "/images/backCards/blank_red.png")
-        } else if (currentColor === 'blue') {
-          firstSelected[0].setAttribute('src', "/images/backCards/blank_blue.jpg")
-          secondSelected[0].setAttribute('src', "/images/backCards/blank_blue.jpg")
-        }
+        firstSelected[0].classList.add('flipOff')
+        secondSelected[0].classList.add('flipOff')
+        firstSelected[0].classList.remove('flipOn')
+        secondSelected[0].classList.remove('flipOn')
+
+        setTimeout( ()=> {
+          if (currentColor === 'green') {
+            firstSelected[0].setAttribute('src', "/images/backCards/blank_green.jpg")
+            secondSelected[0].setAttribute('src', "/images/backCards/blank_green.jpg")
+          } else if(currentColor === 'red') {
+            firstSelected[0].setAttribute('src', "/images/backCards/blank_red.png")
+            secondSelected[0].setAttribute('src', "/images/backCards/blank_red.png")
+          } else if (currentColor === 'blue') {
+            firstSelected[0].setAttribute('src', "/images/backCards/blank_blue.jpg")
+            secondSelected[0].setAttribute('src', "/images/backCards/blank_blue.jpg")
+          }
+        }, 250)
         stopClick.style.pointerEvents ="auto"
-      }, 500 )
+      },500 )
       document.getElementById(cardsFlippedIndex[0]).style.pointerEvents = 'auto'
       cardsFlippedID = []
       cardFlippedID1 = []

@@ -88,7 +88,7 @@ body {
   background-image: url('images/backgrounds/animalCardsBG.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: top; 
+  background-position: bottom; 
   display: flex;
   align-items: flex-start;
   padding-top: 48px;
@@ -144,7 +144,17 @@ body {
   width: 100%;
   border: 2px solid #000;
   border-radius: 15px;
+  transition: all .5s linear 0s;
 }
+
+.flipOn {
+  transform: rotateY(180deg);
+}
+
+.flipOff {
+  transform: rotate(0);
+}
+
 
 .footer {
   width: 100%;
