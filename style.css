@@ -104,7 +104,7 @@ body {
   position: relative;
 }
 
-.messageA {
+.banner {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -117,7 +117,7 @@ body {
   z-index: -10;
 }
 
-.messageAEnd {
+.bannerEnd {
   z-index: 10;
   animation: zoom 1s linear 1,
              opacity 1s linear 1;

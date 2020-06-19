@@ -87,28 +87,33 @@ const backgrounds = [
 ]
 
 const gameBoard = document.querySelector('.gameBoard')
-//container variables to store data of each move
-let defaultCards = animalCards  //default selection
-let sizedCards = []             //new array, length based grid size
-let gridSize = 24               //either 12 or 24
-let currentColor = 'green'
-let timer
+const score = document.querySelector('#score')
+
+//starting default game settings
+let defaultCards = animalCards  //default selection, changes onClick of Game Theme
+let currentColor = 'green'      //default color theme, changes onClick of Game Theme
+let gridSize = 24               //either 12, 20 or 24, changes onClick of Game Size
+
+let activeCardDeck = []             //new array of cards, length based on grid size
+
 
 let numOfMatches = 0
 let cardsFlippedID = []
 let cardFlippedID1 = []
 let cardFlippedID2 = []
 let cardsFlippedIndex = []
+let timer
 
 //Create GameBoard
 function createBoard(cardSet) {
-  const message = '<h3 id="messageA" class="messageA">Match</h3>'
-  const score = document.querySelector('#score')
-  //message.innerHTML = 'Good Luck!'
-  score.innerHTML = 0
-  numOfMatches = 0
-  shuffleArray(cardSet)
+  //Create element to flash message.  
+  //This gets deleted everytime game resets so needs to be recreated.
+  const message = '<h3 id="banner" class="banner">Match</h3>'
+  
   gameBoard.innerHTML = message
+  shuffle(cardSet)
+  resetData()
+  
   for (let i = 0; i < cardSet.length; i++) {
     let topCard = document.createElement('div')
     if (currentColor == 'green') {
@@ -121,10 +126,10 @@ function createBoard(cardSet) {
     topCard.setAttribute("data-id", cardSet[i].id)
     topCard.setAttribute("class", "card card"+cardSet[i].id)
     topCard.setAttribute("id", i)
-    clearInterval(timer)
     gameBoard.appendChild(topCard)
-    timerDisplay('00')
-    confetti.stop()
+    //clearInterval(timer)
+    //timerDisplay('00')
+    //confetti.stop()
   }
 }
 
@@ -135,45 +140,54 @@ function deleteBoard() {
   }
 }
 
+//Reset Data
+function resetData() {
+  score.innerHTML = 0
+  numOfMatches = 0
+  clearInterval(timer)
+  timerDisplay('00')
+  confetti.stop()
+}
+
 //shuffle the cards using Fisher-Yates (aka Knuth) Shuffle
-function shuffleArray(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex
+function shuffle(cardSet) {
+  var currentIndex = cardSet.length, temporaryValue, randomIndex
   // While there remain elements to shuffle...
   while (0 !== currentIndex) {
     // Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex)
     currentIndex -= 1;
     // And swap it with the current element.
-    temporaryValue = array[currentIndex]
-    array[currentIndex] = array[randomIndex]
-    array[randomIndex] = temporaryValue
+    temporaryValue = cardSet[currentIndex]
+    cardSet[currentIndex] = cardSet[randomIndex]
+    cardSet[randomIndex] = temporaryValue
   }
-  return array;
+  return cardSet;
 }
 
 //select game board size
-//outputs array that is 12, 20 or 24
 function gameSize(num) {
-  const numOfPairs = document.querySelector('#numOfPairs')
+  const numOfPairs = document.querySelector('#numOfPairs')  //total number of matches on display
   let cards
 
-  sizedCards = []
+  activeCardDeck = []
   gridSize = num
+  numOfPairs.innerHTML = num / 2
   
+  //outputs array called activeCardDeck that is 12, 20 or 24 in length
   if (num === 24) {
-    defaultCards.forEach( item => {sizedCards.push(item)} )
+    defaultCards.forEach( item => {activeCardDeck.push(item)} )
   } else if (num === 12) {
-    defaultCards.forEach ( item => {if (item.id < 7 ) {sizedCards.push(item)}} )
+    defaultCards.forEach( item => {if (item.id < 7 ) {activeCardDeck.push(item)}} )
     
   } else if (num === 20) {
-    defaultCards.forEach ( item => {if (item.id < 11 ) {sizedCards.push(item)}} )
+    defaultCards.forEach( item => {if (item.id < 11 ) {activeCardDeck.push(item)}} )
   }
   
   deleteBoard()
-  createBoard(sizedCards)
-  numOfPairs.innerHTML = num / 2
+  createBoard(activeCardDeck)
   
-  //Adjusting the CSS sizing AFTER the  new board is created
+  //Adjusting the CSS sizing AFTER the new board is created
   if (num === 24) {
     cards = document.querySelectorAll('.card')
     cards.forEach(item => item.style.width = "16.66667%")
@@ -193,9 +207,9 @@ function gameSize(num) {
 function changeTheme(theme, cardColor, index) {
   if (theme === defaultCards) {return alert("You are already on that theme")}
   if (confirm('Are you sure?  You will lose all progress in the current game.')) {
-    deleteBoard()
-    currentColor = cardColor
+    //If theme changes, new parameters are brought into game, style is changed, game size is rerun
     defaultCards = theme
+    currentColor = cardColor
     document.querySelector('.gameContainer').style.backgroundImage = `url('images/backgrounds/${backgrounds[index].bg}')`
     document.querySelector('.gridText').style.color = backgrounds[index].color
     document.querySelector('.themeText').style.color = backgrounds[index].color
@@ -207,7 +221,6 @@ function changeTheme(theme, cardColor, index) {
 }
 
 
-
 //On Page Load, load gameboard
 window.addEventListener('load', () => {
   createBoard(defaultCards)
@@ -217,102 +230,113 @@ window.addEventListener('load', () => {
 //On click, start game
 window.addEventListener('click', (e)=> {
   let el = e.target
-  let cards
   let parent = el.parentNode
   let card = parent.getAttribute('data-id')
   let cardID = parent.getAttribute('id')
   let cardItem
+  let cards
   
   //When player clicks outside the gameboard, do nothing
   if (card == null) {
     return
   //else flip cards to play the game
   } else {
-    if (sizedCards.length === 0) {
+    //choose which cardSet to use to start play
+    if (activeCardDeck.length === 0) {
       cards = defaultCards
     } else {
-      cards = sizedCards
+      cards = activeCardDeck
     }
     cardItem = cards[cardID].src
     cardsFlippedID.push(card)
     cardsFlippedIndex.push(cardID)
-    checkForMatch(cardsFlippedIndex, cards)
-    flipCard(el, cardItem)
+    checkForMatch(cardsFlippedIndex, cards) //check to see two selected cards match
+    flipCard(el, cardItem)  //run card flip animation
   }
   
 })
 
 //after two cards are selected check for match
 function checkForMatch(index, cardSet) {
-  const score = document.querySelector('#score')
-
+  //prevents user from selecting same card twice by locking pointer after first click on the card.
   if (document.getElementById(index) !== null) {
     document.getElementById(index).style.pointerEvents = 'none'
   }
 
+  // when two cards have been selected,
   if (cardsFlippedID.length === 2) {
     const stopClick = document.querySelector('.gameBoard')
-    let messageA = document.getElementById('messageA')
+    let banner = document.getElementById('banner')
     let firstSelected = document.getElementById(index[0]).children
     let secondSelected = document.getElementById(index[1]).children
-    stopClick.style.pointerEvents ="none"
+    stopClick.style.pointerEvents ="none" //prevents anymore clicking once two cards are selected
     cardFlippedID1 = cardsFlippedID[0] 
     cardFlippedID2 = cardsFlippedID[1]
 
-    //if cards match, do something
+    //if cards match,
     if (cardFlippedID1 === cardFlippedID2) {
       const selectedCards = document.querySelectorAll('.card' + cardFlippedID1)
-      selectedCards.forEach( item => {
-        item.style.pointerEvents = "none"
-      } )
+
+      //prevent these cards from being clicked on for duration of the game
+      selectedCards.forEach( item => {item.style.pointerEvents = "none"} )
       
-      messageA.innerHTML = "Match"
       numOfMatches++
       score.innerHTML = numOfMatches
-      checkForWin(cardSet)
-      cardsFlippedID = []
-      cardFlippedID1 = []
-      cardFlippedID2 = []
-      cardsFlippedIndex = []
-      stopClick.style.pointerEvents ="auto"
-      setTimeout( ()=> {
-        messageA.classList.remove('messageAEnd')
-      }, 500)
+
+      //check if game is won,
+      if ( checkForWin(cardSet) === true) {
+        return
+      //else continue game
+      } else {
+        cardsFlippedID = [] //resets these variables for use on next pair of selected cards
+        cardFlippedID1 = [] //resets these variables for use on next pair of selected cards
+        cardFlippedID2 = [] //resets these variables for use on next pair of selected cards
+        cardsFlippedIndex = []  //resets these variables for use on next pair of selected cards
+        stopClick.style.pointerEvents ="auto" //resume ability to select unmatched cards on board
       
-      messageA.classList.add('messageAEnd')
+        //flash banner indicating match
+        banner.innerHTML = "Match"
+        setTimeout( ()=> {
+          banner.classList.remove('bannerEnd')
+        }, 500)
+          banner.classList.add('bannerEnd')
+        }
+
+    //if card dont match
     } else if (cardFlippedID1 !== cardFlippedID2) {
-      //if card dont match
-      //setTimeout( function(){item1.setAttribute("src", `/images/${item2}`)}, 250 )
+      
+      //flip cards back over after a delay
+      //delay given to give both cards time to fully flip to picture before action is taken to put them back face down.
       setTimeout(()=> {
         flipCardBack(firstSelected[0], currentColor)
         flipCardBack(secondSelected[0], currentColor)
         stopClick.style.pointerEvents ="auto"
-        console.log(currentColor)
       }, 700)
-      document.getElementById(cardsFlippedIndex[0]).style.pointerEvents = 'auto'
-      cardsFlippedID = []
-      cardFlippedID1 = []
-      cardFlippedID2 = []
-      cardsFlippedIndex = []
+      document.getElementById(cardsFlippedIndex[0]).style.pointerEvents = 'auto' //unmatched cards can now be selected again
+      cardsFlippedID = [] //resets these variables for use on next pair of selected cards
+      cardFlippedID1 = [] //resets these variables for use on next pair of selected cards
+      cardFlippedID2 = [] //resets these variables for use on next pair of selected cards
+      cardsFlippedIndex = []  //resets these variables for use on next pair of selected cards
     }
   } 
 }
 
 //Check to see if all cards are matched
 function checkForWin(cardSet) {
+  let banner = document.querySelector('.banner')
+  
+  //if all cards are matched,
   if (numOfMatches === (cardSet.length) / 2) {
-    const message = document.querySelector('#message')
-    const score = document.querySelector('#score')
-    const gameBoard = document.querySelector('.gameBoard')
-    
-    confetti.start()
-    messageA.innerHTML = "You Win!"
-    clearInterval(timer)
+    banner.innerHTML = "You Win!"
+    setTimeout( ()=> {
+      banner.classList.remove('bannerEnd')
+    }, 500)
+    banner.classList.add('bannerEnd')
 
-      setTimeout( ()=> {
-        askPlayAgain()
-        
-      }, 2500 )
+    confetti.start()
+    clearInterval(timer)
+    setTimeout( ()=> {askPlayAgain()}, 2500 ) //after some time, popup to ask if user will play another game
+    return true
   }
 }
 
@@ -339,8 +363,6 @@ function timerDisplay(startNum){
   let displaySec = startNum
   let displayTime = document.querySelector('.time')
   
-  
-
   timer = setInterval(function() {
     totalTime++
     sec = totalTime
@@ -374,7 +396,6 @@ function timerDisplay(startNum){
 
     }
   }, 1000)
-
 }
 
 function askPlayAgain() {
@@ -390,7 +411,7 @@ function playAgain(res) {
     cardFlippedID2 = []
     cardsFlippedIndex = []
     deleteBoard()
-    createBoard(sizedCards)
+    createBoard(activeCardDeck)
     message.innerHTML = ""
     score.innerHTML = 0
     confetti.stop()
