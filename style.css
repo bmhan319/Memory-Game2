@@ -212,7 +212,7 @@ body {
   height: 80%;
   border: 10px solid green;
   border-radius: 15px;
-  background-image: url('/images/backgrounds/greenTexture.jpg');
+  background-image: url('images/backgrounds/greenTexture.jpg');
   background-color: #959E27;
   display: flex;
   align-items: center;

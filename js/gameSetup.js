@@ -11,11 +11,11 @@ function createBoard(cardSet) {
   for (let i = 0; i < cardSet.length; i++) {
     let topCard = document.createElement('div')
     if (currentColor == 'green') {
-      topCard.innerHTML = '<img class="topCard" src="/images/backCards/blank_green.jpg" alt="top of card">'
+      topCard.innerHTML = '<img class="topCard" src="images/backCards/blank_green.jpg" alt="top of card">'
     } else if (currentColor == 'red') {
-      topCard.innerHTML = '<img class="topCard" src="/images/backCards/blank_red.jpg" alt="top of card">'
+      topCard.innerHTML = '<img class="topCard" src="images/backCards/blank_red.jpg" alt="top of card">'
     } else if (currentColor == 'blue') {
-      topCard.innerHTML = '<img class="topCard" src="/images/backCards/blank_blue.jpg" alt="top of card">'
+      topCard.innerHTML = '<img class="topCard" src="images/backCards/blank_blue.jpg" alt="top of card">'
     }
     topCard.setAttribute("data-id", cardSet[i].id)
     topCard.setAttribute("class", "card card"+cardSet[i].id)
@@ -166,7 +166,7 @@ function flipCard(item1, item2) {
   item1.classList.add('flipOn')
   item1.classList.remove('flipOff')
   setTimeout( function(){
-    item1.setAttribute("src", `/images/${item2}`)
+    item1.setAttribute("src", `images/${item2}`)
   }, 250 )
 }
 
@@ -176,7 +176,7 @@ function flipCardBack(element, color) {
   element.classList.add('flipOff')
   element.classList.remove('flipOn')
   setTimeout( function(){
-    element.setAttribute("src", `/images/backCards/blank_${color}.jpg`)
+    element.setAttribute("src", `images/backCards/blank_${color}.jpg`)
   }, 250 )
 }
 
