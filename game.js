@@ -127,9 +127,6 @@ function createBoard(cardSet) {
     topCard.setAttribute("class", "card card"+cardSet[i].id)
     topCard.setAttribute("id", i)
     gameBoard.appendChild(topCard)
-    //clearInterval(timer)
-    //timerDisplay('00')
-    //confetti.stop()
   }
 }
 
@@ -144,8 +141,14 @@ function deleteBoard() {
 function resetData() {
   score.innerHTML = 0
   numOfMatches = 0
+  cardsFlippedID = []
+  cardFlippedID1 = []
+  cardFlippedID2 = []
+  cardsFlippedIndex = []
   clearInterval(timer)
   timerDisplay('00')
+  message.innerHTML = ""
+  score.innerHTML = 0
   confetti.stop()
 }
 
@@ -168,7 +171,6 @@ function shuffle(cardSet) {
 //select game board size
 function gameSize(num) {
   const numOfPairs = document.querySelector('#numOfPairs')  //total number of matches on display
-  let cards
 
   activeCardDeck = []
   gridSize = num
@@ -186,21 +188,7 @@ function gameSize(num) {
   
   deleteBoard()
   createBoard(activeCardDeck)
-  
-  //Adjusting the CSS sizing AFTER the new board is created
-  if (num === 24) {
-    cards = document.querySelectorAll('.card')
-    cards.forEach(item => item.style.width = "16.66667%")
-    gameBoard.style.maxWidth = "600px"
-  } else if (num === 12) {
-    cards = document.querySelectorAll('.card')
-    cards.forEach(item => item.style.width = "25%")
-    gameBoard.style.maxWidth = "450px"
-  } else if (num === 20) {
-    cards = document.querySelectorAll('.card')
-    cards.forEach(item => item.style.width = "20%")
-    gameBoard.style.maxWidth = "500px"
-  }
+  cssGridStyle(gridSize)
 }
 
 //Changes Theme
@@ -401,7 +389,7 @@ function timerDisplay(startNum){
     displayTime.innerHTML = displayMin + ':' + displaySec
     
     //End game after 30 minutes
-    if (min === 1) {
+    if (min === 30) {
       clearInterval(timer)
       alert("Time's Up!")
       deleteBoard()
@@ -410,41 +398,29 @@ function timerDisplay(startNum){
   }, 1000)
 }
 
+//Display 'you're a winner' popup
 function askPlayAgain() {
   document.querySelector('.winnerPlayAgain').style.display = "block"
 }
 
+//Does user want to play again
 function playAgain(res) {
+  let popup = document.querySelector('.winnerPlayAgain')
+   
+   //if YES,
   if (res === 'yes') {
-    document.querySelector('.winnerPlayAgain').style.display = "none"
-    numOfMatches = 0
-    cardsFlippedID = []
-    cardFlippedID1 = []
-    cardFlippedID2 = []
-    cardsFlippedIndex = []
+    popup.style.display = "none"
     deleteBoard()
     createBoard(activeCardDeck)
-    message.innerHTML = ""
-    score.innerHTML = 0
-    confetti.stop()
-    if (gridSize === 24) {
-      cards = document.querySelectorAll('.card')
-      cards.forEach(item => item.style.width = "16.666667%")
-      gameBoard.style.maxWidth = "600px"
-    } else if (gridSize === 12) {
-      cards = document.querySelectorAll('.card')
-      cards.forEach(item => item.style.width = "25%")
-      gameBoard.style.maxWidth = "450px"
-    } else if (gridSize === 20) {
-      cards = document.querySelectorAll('.card')
-      cards.forEach(item => item.style.width = "20%")
-      gameBoard.style.maxWidth = "500px"
-    }
+    cssGridStyle(gridSize)
+
+  //else NO,
   } else {
-    document.querySelector('.winnerPlayAgain').style.display = "none"
+    popup.style.display = "none"
   }
 }
 
+//Animation for Flipping Cards
 function flipCard(item1, item2) {
   item1.classList.add('flipOn')
   item1.classList.remove('flipOff')
@@ -453,10 +429,29 @@ function flipCard(item1, item2) {
   }, 250 )
 }
 
+//Animation for flipping them back
 function flipCardBack(element, color) {
   element.classList.add('flipOff')
   element.classList.remove('flipOn')
   setTimeout( function(){
     element.setAttribute("src", `/images/backCards/blank_${color}.jpg`)
   }, 250 )
+}
+
+//Setting Grid CSS
+function cssGridStyle(gridSize) {
+   let cards
+  if (gridSize === 24) {
+    cards = document.querySelectorAll('.card')
+    cards.forEach(item => item.style.width = "16.66667%")
+    gameBoard.style.maxWidth = "600px"
+  } else if (gridSize === 12) {
+    cards = document.querySelectorAll('.card')
+    cards.forEach(item => item.style.width = "25%")
+    gameBoard.style.maxWidth = "450px"
+  } else if (gridSize === 20) {
+    cards = document.querySelectorAll('.card')
+    cards.forEach(item => item.style.width = "20%")
+    gameBoard.style.maxWidth = "500px"
+  }
 }
