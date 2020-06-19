@@ -340,6 +340,7 @@ function checkForWin(cardSet) {
   }
 }
 
+//Open Credits Modal
 function modalOpen() {
   modal = document.querySelector('.modal')
   modalContainer = document.querySelector('.modalContainer ')
@@ -348,6 +349,7 @@ function modalOpen() {
   modal.style.zIndex = "0"
 }
 
+//Close Credits Modal
 function modalClose() {
   modal = document.querySelector('.modal')
   modalContainer = document.querySelector('.modalContainer ')
@@ -355,6 +357,7 @@ function modalClose() {
   modal.classList.remove('modalOpen')
 }
 
+//Create a count-up timer from scratch
 function timerDisplay(startNum){
   let totalTime = -1
   let min = 0
@@ -363,37 +366,44 @@ function timerDisplay(startNum){
   let displaySec = startNum
   let displayTime = document.querySelector('.time')
   
+  //Do the following every second:
   timer = setInterval(function() {
     totalTime++
     sec = totalTime
     displaySec = sec
 
+    //Every 60 sec, add 1 to min
     if (totalTime % 60 === 0 && totalTime > 0) {
       min++
     }
 
+    //when second hits 60, reset counter back to 0
     if (totalTime >= 60) {
       sec = totalTime - (60 * min)
     }
 
+    //display seconds with 2 digi-padding
     if (sec < 10) {
       displaySec = "0" + sec
     } else if (sec >= 10 && sec < 60) {
       displaySec = sec
     } 
 
+    //display minutes with 2 digi-padding
     if (min > 0 && min < 10) {
       displayMin = '0' + min
     } else if (min > 10 && min < 60) {
       displayMin = min
     }
 
+    //final screen display format to counter-up timer
     displayTime.innerHTML = displayMin + ':' + displaySec
     
+    //End game after 30 minutes
     if (min === 30) {
       clearInterval(timer)
       alert("Time's Up!")
-
+      gameSize(gridSize)
     }
   }, 1000)
 }
