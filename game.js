@@ -285,6 +285,7 @@ function checkForMatch(index, cardSet) {
 
       //check if game is won,
       if ( checkForWin(cardSet) === true) {
+        stopClick.style.pointerEvents ="auto"
         return
       //else continue game
       } else {
@@ -400,9 +401,10 @@ function timerDisplay(startNum){
     displayTime.innerHTML = displayMin + ':' + displaySec
     
     //End game after 30 minutes
-    if (min === 30) {
+    if (min === 1) {
       clearInterval(timer)
       alert("Time's Up!")
+      deleteBoard()
       gameSize(gridSize)
     }
   }, 1000)
