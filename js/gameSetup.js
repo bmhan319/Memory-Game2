@@ -49,7 +49,7 @@ function resetData() {
 }
 
 
-//select game board size
+//Select game board size
 function gameSize(num) {
   const numOfPairs = document.querySelector('#numOfPairs')  //total number of matches on display
 
@@ -57,7 +57,7 @@ function gameSize(num) {
   gridSize = num
   numOfPairs.innerHTML = num / 2
   
-  //outputs array called activeCardDeck that is 12, 20 or 24 in length
+  //Outputs array called activeCardDeck that is 12, 20 or 24 in length
   if (num === 24) {
     defaultCards.forEach( item => {activeCardDeck.push(item)} )
   } else if (num === 12) {
@@ -73,11 +73,10 @@ function gameSize(num) {
 }
 
 
-//Select Theme
+//Select Theme and bring up Popup
 function changeTheme(theme, cardColor, index) {
-  if (theme === defaultCards) {return alert("You are already on that theme")}
-  if (confirm('Are you sure?  You will lose all progress in the current game.')) {
-    //If theme changes, new parameters are brought into game, style is changed, game size is rerun
+  if (theme === defaultCards) {return displayPopUp('sameTheme')
+  } else {
     defaultCards = theme
     currentColor = cardColor
     document.querySelector('.gameContainer').style.backgroundImage = `url('images/backgrounds/${backgrounds[index].bg}')`
@@ -91,7 +90,7 @@ function changeTheme(theme, cardColor, index) {
 }
 
 
-//shuffle the cards using Fisher-Yates (aka Knuth) Shuffle
+//Shuffle the cards using Fisher-Yates (aka Knuth) Shuffle
 function shuffle(cardSet) {
   var currentIndex = cardSet.length, temporaryValue, randomIndex
   // While there remain elements to shuffle...
