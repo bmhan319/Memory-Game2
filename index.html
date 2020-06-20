@@ -9,19 +9,19 @@
 </head>
 <body>
   <header class="header">
-    <h2 class="memoryContainer">Memory Game</h2>
+    <h2 class="memoryContainer">Memory</h2>
     <h3 class="messageContainer">Time: <span id="message" class="time">00:00</span></h3>
     <h3 class="scoreContainer">Score: <span id="score" class="score">0</span> of <span id="numOfPairs">12</span></h3>
   </header>
   <div class="gridType">
     <div class="gridContainer">
-      <h4 class="gridText">Game Size:</h4>
-      <button class="gridSize 4x3" type="button" onclick="gameSize(12)">4x3</button>
-      <button class="gridSize 5x4" type="button" onclick="gameSize(20)">5x4</button>
-      <button class="gridSize 6x4" type="button" onclick="gameSize(24)">6x4</button>
+      <h4 class="gridText">Size: </h4>
+      <button class="gridSize small" type="button" onclick="gameSize(12)">4x3</button>
+      <button class="gridSize med" type="button" onclick="gameSize(20)">5x4</button>
+      <button class="gridSize large" type="button" onclick="gameSize(24)">6x4</button>
     </div>
     <div class="themeContainer">
-      <h4 class="themeText">Game Theme:</h4>
+      <h4 class="themeText">Theme: </h4>
       <button class="themeType animals" type="button" onclick="changeTheme(animalCards, 'green', 0)">Animal</button>
       <button class="themeType dinosaurs" type="button" onclick="changeTheme(dinoCards, 'red', 1)">Dinosaur</button>
       <button class="themeType ocean" type="button" onclick="changeTheme(oceanCards, 'blue', 2)">Ocean</button>
