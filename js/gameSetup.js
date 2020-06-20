@@ -66,7 +66,6 @@ function gameSize(num) {
   gridSize = num
   numOfPairs.innerHTML = num / 2
 
-
   //Outputs array called activeCardDeck that is 12, 20 or 24 in length
   if (num === 24) {
     defaultCards.forEach( item => {activeCardDeck.push(item)} )

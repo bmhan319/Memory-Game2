@@ -329,17 +329,23 @@ body {
 }
 
 /* PopUp */
-.popUp{
+.popUp {
+  width: 100vw;
+  height: 100vh;
   position: absolute;
+  top: 0;
+  left:0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.popUpContainer{
+  position: relative;
   width: 300px;
   height: 200px;
-  background-color: ;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   border: 6px solid green;
   background-color: #fff;
-  display: none;
   box-shadow:  10px 10px 20px #333;
 }
 

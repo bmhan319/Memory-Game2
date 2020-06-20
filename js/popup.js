@@ -1,10 +1,11 @@
 //Display popup
 function displayPopUp(popUpType) {
-  document.querySelector('.popUp').style.display = "block"
+  document.querySelector('.popUp').style.display = "flex"
   const statement = document.querySelector('.popUpStatement')
   const question = document.querySelector('.popUpQuestion')
   const button1 = document.querySelector('.buttonNo')
   const button2 = document.querySelector('.buttonYes')
+
 
   //PopUp properties for a Winner display
   if (popUpType === 'winner') {
