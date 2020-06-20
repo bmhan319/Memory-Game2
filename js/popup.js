@@ -19,12 +19,21 @@ function displayPopUp(popUpType) {
     button2.classList.add('popUpAgain')
     button2.classList.remove('popUpDone')
     button2.innerHTML = "OK. Play again."
-  
-  //PopUp display for same theme warning.
-  } else if (popUpType === 'sameTheme') {
-    statement.innerHTML = "You are already on that theme"
-    question.innerHTML = ""
 
+  //PopUp properties for other  
+  } else {
+
+    //Display for same theme warning
+    if (popUpType === 'sameTheme') {
+      statement.innerHTML = "You are already on that theme"
+
+    //Display for same game size warning  
+    } else if (popUpType === 'sameSize') {
+      statement.innerHTML = "The game is already at this size."
+    }
+
+    //Shared properties for both warnings
+    question.innerHTML = ""
     button1.removeAttribute('onclick', "playAgain('no')")
     button1.classList.remove('popUpDone')
     button1.innerHTML = ""

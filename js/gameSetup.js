@@ -48,6 +48,15 @@ function resetData() {
   confetti.stop()
 }
 
+//Check Game Size
+function checkSize(num) {
+  if (num === gridSize) {
+    return displayPopUp('sameSize')
+  } else {
+    gameSize(num)
+  }
+}
+
 
 //Select game board size
 function gameSize(num) {
@@ -56,7 +65,8 @@ function gameSize(num) {
   activeCardDeck = []
   gridSize = num
   numOfPairs.innerHTML = num / 2
-  
+
+
   //Outputs array called activeCardDeck that is 12, 20 or 24 in length
   if (num === 24) {
     defaultCards.forEach( item => {activeCardDeck.push(item)} )
@@ -75,7 +85,8 @@ function gameSize(num) {
 
 //Select Theme and bring up Popup
 function changeTheme(theme, cardColor, index) {
-  if (theme === defaultCards) {return displayPopUp('sameTheme')
+  if (theme === defaultCards) {
+    return displayPopUp('sameTheme')
   } else {
     defaultCards = theme
     currentColor = cardColor
