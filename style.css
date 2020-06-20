@@ -114,6 +114,7 @@ body {
 
 /* Game Board */
 .gameContainer {
+  overflow: hidden;
   width: 100%;
   height: calc(100vh - 150px);
   background-image: url('images/backgrounds/animalCardsBG.jpg');
@@ -157,7 +158,6 @@ body {
   color: #ccc;
   text-shadow: 2px 2px #333;
   font-size: 1rem;
-  transform: scale(4);
   opacity: 0;
   z-index: -10;
 }
@@ -170,7 +170,7 @@ body {
 
 @keyframes zoom {
   0% {transform: scale(4)}
-  100% {transform: scale(10)}
+  100% {transform: scale(15)}
 }
 
 @keyframes opacity {
@@ -329,7 +329,8 @@ body {
 }
 
 
-/* PLay Again Popup */
+/* Play Again Popup */
+/*
 .winnerPlayAgain{
   position: absolute;
   width: 300px;
@@ -386,6 +387,69 @@ body {
 
 .winnerDone:hover,
 .winnerAgain:hover {
+  background-color: green;
+  color: #fff;
+  cursor: pointer;
+}
+*/
+
+/* PopUp */
+.popUp{
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  background-color: ;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 6px solid green;
+  background-color: #fff;
+  display: none;
+  box-shadow:  10px 10px 20px #333;
+}
+
+.popUpTextContainer {
+  height: 156px;
+  margin: 16px;
+}
+
+.popUpTitleContainer {
+  height: 100px;
+  padding: 8px;
+}
+
+.popUpStatement {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.popUpQuestion {
+  padding-top: 8px;
+  text-align: center;
+}
+
+.popUpButtonContainer {
+  height: 52px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.popUpDone,
+.popUpAgain {
+  width: 45%;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  border: 1px solid green;
+  color: green;
+  background-color: #fff;
+}
+
+.popUpDone:hover,
+.popUpAgain:hover {
   background-color: green;
   color: #fff;
   cursor: pointer;

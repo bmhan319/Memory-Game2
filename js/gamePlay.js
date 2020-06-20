@@ -132,21 +132,37 @@ function checkForWin(cardSet) {
 
     confetti.start()
     clearInterval(timer)
-    setTimeout( ()=> {askPlayAgain()}, 2500 ) //after some time, popup to ask if user will play another game
+    setTimeout( ()=> {displayPopUp('winner')}, 2500 ) //after some time, popup to ask if user will play another game
     return true
   }
 }
 
 
-//Display 'you're a winner' popup
-function askPlayAgain() {
-  document.querySelector('.winnerPlayAgain').style.display = "block"
+//Display popup
+function displayPopUp(popUpType) {
+  document.querySelector('.popUp').style.display = "block"
+  const statement = document.querySelector('.popUpStatement')
+  const question = document.querySelector('.popUpQuestion')
+  const button1 = document.querySelector('.buttonNo')
+  const button2 = document.querySelector('.buttonYes')
+
+
+  if (popUpType === 'winner') {
+    statement.innerHTML = 'Winner Winner Chicken Dinner!'
+    question.innerHTML = 'Wanna play again?'
+    button1.setAttribute('onclick', "playAgain('no')")
+    button1.classList.add('popUpDone')
+    button1.innerHTML = "Nah, I'm Done."
+    button2.setAttribute('onclick', "playAgain('yes')")
+    button2.classList.add('popUpAgain')
+    button2.innerHTML = "OK. Play again."
+  }
 }
 
 
 //Does user want to play again
 function playAgain(res) {
-  let popup = document.querySelector('.winnerPlayAgain')
+  let popup = document.querySelector('.popUp')
    
    //if YES,
   if (res === 'yes') {
