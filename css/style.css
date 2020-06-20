@@ -117,7 +117,7 @@ body {
   overflow: hidden;
   width: 100%;
   height: calc(100vh - 150px);
-  background-image: url('images/backgrounds/animalCardsBG.jpg');
+  background-image: url('../images/backgrounds/animalCardsBG.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: bottom; 
@@ -248,7 +248,7 @@ body {
   height: 80%;
   border: 10px solid green;
   border-radius: 15px;
-  background-image: url('images/backgrounds/greenTexture.jpg');
+  background-image: url('../images/backgrounds/greenTexture.jpg');
   background-color: #959E27;
   display: flex;
   align-items: center;
