@@ -1,0 +1,25 @@
+@media only screen and (min-width: 600px) {
+  
+  /* Header Bar */
+  .memoryContainer,
+  .messageContainer,
+  .scoreContainer {
+    font-size: 1.5rem;
+  }
+  
+  
+  /* Settings Bar */
+  .gridText,
+  .themeText {
+    font-size:  1.5rem;
+  }
+
+  .gridSize {
+    width: 40px;
+  }
+
+  .gridSize,
+  .themeType {
+    font-size: .85rem;
+  }
+}

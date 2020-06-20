@@ -30,6 +30,7 @@ body {
 
 .memoryContainer {
   padding-left: 16px;
+  font-size: 1rem;
 }
 
 .messageContainer {
@@ -40,6 +41,12 @@ body {
   padding-right: 16px;
   text-align: end;
 }
+
+.memoryContainer,
+.messageContainer,
+.scoreContainer {
+  font-size: 1rem;
+  }
 
 
 /* Settings Bar */
