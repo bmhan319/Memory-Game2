@@ -162,9 +162,7 @@ function timerDisplay(startNum){
     //End game after 30 minutes
     if (min === 30) {
       clearInterval(timer)
-      alert("Time's Up!")
-      deleteBoard()
-      gameSize(gridSize)
+      displayPopUp('timesUp')
     }
   }, 1000)
 }

@@ -21,7 +21,20 @@ function displayPopUp(popUpType) {
     button2.classList.remove('popUpDone')
     button2.innerHTML = "OK. Play again."
 
-  //PopUp properties for other  
+  //Popup for expired time
+  } else if (popUpType === 'timesUp') {
+    statement.innerHTML = "Time's Up"
+    question.innerHTML = ""
+    button1.removeAttribute('onclick', "playAgain('no')")
+    button1.classList.remove('popUpDone')
+    button1.innerHTML = ""
+    
+    button2.setAttribute('onclick', "playAgain('time')")
+    button2.classList.add('popUpDone')
+    button2.classList.remove('popUpAgain')
+    button2.innerHTML = 'Ok'
+
+  //PopUp properties for warnings  
   } else {
 
     //Display for same theme warning
@@ -58,8 +71,15 @@ function playAgain(res) {
     createBoard(activeCardDeck)
     cssGridStyle(gridSize)
 
-  //else NO,
+  //else if NO,
   } else if (res === 'no') {
     popup.style.display = "none"
+  
+  //else if Time Expired
+  } else if (res === 'time') {
+    popup.style.display = "none"
+    deleteBoard()
+    gameSize(gridSize)
   }
+  
 }
