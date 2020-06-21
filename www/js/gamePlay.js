@@ -16,13 +16,13 @@ let timer
 
 
 //On Page Load, load gameboard
-window.addEventListener('load', () => {
+document.addEventListener('load', () => {
   createBoard(defaultCards)
 })
 
 
 //On click, start game
-window.addEventListener('click', (e)=> {
+document.addEventListener('click', (e)=> {
   let el = e.target
   let parent = el.parentNode
   let card = parent.getAttribute('data-id')
