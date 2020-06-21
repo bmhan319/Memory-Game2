@@ -25,16 +25,12 @@ body {
 
 .header h2,
 .header h3 {
-  width: 33.3333%;
-}
-
-.memoryContainer {
-  padding-left: 16px;
-  font-size: 1rem;
+  width: 50%;
 }
 
 .messageContainer {
-  text-align: center;
+  padding-left: 16px;
+  text-align: start;
 }
 
 .scoreContainer {
@@ -53,35 +49,36 @@ body {
 .gridType {
   background-color: #ccc;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
-  height: 50px;
+  height: 80px;
 }
 
 .gridContainer,
 .themeContainer {
-  width: 40%;
+  width: 100%;
   display: flex;
   align-items: center;
-  padding: 0 8px 0 16px;
+  justify-content: flex-end;
+  padding: 0 16px 0 8px;
 }
 
-.themeContainer {
-  width: 60%;
-  justify-content: flex-end;
-  padding: 0 16px;
+.gridContainer {
+  margin-bottom: 12px;
 }
 
 .gridText,
 .themeText {
   color: green;
-  font-size: 1rem;
+  font-size: .80rem;
   text-align: end;
 }
 
 .gridSize,
 .themeType {
-  width: 30px;
-  height: 30px;
+  width: 25%;
+  height: 24px;
   border-radius: 0;
   border: 0;
   margin: 0 2px 0 8px;
@@ -89,10 +86,6 @@ body {
   background-color: green;
   color: #fff;
   font-size: .65rem;
-}
-
-.themeType {
-  width: 80px;
 }
 
 .small,
@@ -116,8 +109,9 @@ body {
 .gameContainer {
   overflow: hidden;
   width: 100%;
-  height: calc(100vh - 150px);
-  background-image: url('../images/backgrounds/animalCardsBG.jpg');
+  height: calc(100vh - 180px);
+  background-image: url("../images/backgrounds/animalCardsBG.jpg");
+  background-color: green;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: bottom; 
@@ -311,7 +305,7 @@ body {
 
 .creditTitle {
   font-weight: bold;
-  font-size: 1rem;
+  font-size: .85rem;
   padding: 8px 0 0px 0;
 }
 

@@ -9,6 +9,28 @@
   
   
   /* Settings Bar */
+  .gridType {
+    flex-direction: row;
+    align-items: center;
+    justify-content: none;
+    width: 100%;
+    height: 50px;
+  }
+
+  .gridContainer {
+    width: 40%;
+    margin: 0;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 0 0 16px;
+  }
+
+  .themeContainer {
+    width: 60%;
+    justify-content: flex-end;
+    padding: 0 16px 0 0;
+  }
+
   .gridText,
   .themeText {
     font-size:  1.5rem;
@@ -21,6 +43,11 @@
   .gridSize,
   .themeType {
     font-size: .85rem;
+  }
+
+  /* Game Board */
+  .gameContainer {
+    height: calc(100vh - 150px);
   }
 
 
