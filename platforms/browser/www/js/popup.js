@@ -1,0 +1,85 @@
+//Display popup
+function displayPopUp(popUpType) {
+  document.querySelector('.popUp').style.display = "flex"
+  const statement = document.querySelector('.popUpStatement')
+  const question = document.querySelector('.popUpQuestion')
+  const button1 = document.querySelector('.buttonNo')
+  const button2 = document.querySelector('.buttonYes')
+
+
+  //PopUp properties for a Winner display
+  if (popUpType === 'winner') {
+    statement.innerHTML = 'Winner Winner Chicken Dinner!'
+    question.innerHTML = 'Wanna play again?'
+
+    button1.setAttribute('onclick', "playAgain('no')")
+    button1.classList.add('popUpDone')
+    button1.innerHTML = "Nah, I'm Done."
+    
+    button2.setAttribute('onclick', "playAgain('yes')")
+    button2.classList.add('popUpAgain')
+    button2.classList.remove('popUpDone')
+    button2.innerHTML = "OK. Play again."
+
+  //Popup for expired time
+  } else if (popUpType === 'timesUp') {
+    statement.innerHTML = "Time's Up"
+    question.innerHTML = ""
+    button1.removeAttribute('onclick', "playAgain('no')")
+    button1.classList.remove('popUpDone')
+    button1.innerHTML = ""
+    
+    button2.setAttribute('onclick', "playAgain('time')")
+    button2.classList.add('popUpDone')
+    button2.classList.remove('popUpAgain')
+    button2.innerHTML = 'Ok'
+
+  //PopUp properties for warnings  
+  } else {
+
+    //Display for same theme warning
+    if (popUpType === 'sameTheme') {
+      statement.innerHTML = "You are already on that theme"
+
+    //Display for same game size warning  
+    } else if (popUpType === 'sameSize') {
+      statement.innerHTML = "The game is already at this size."
+    }
+
+    //Shared properties for both warnings
+    question.innerHTML = ""
+    button1.removeAttribute('onclick', "playAgain('no')")
+    button1.classList.remove('popUpDone')
+    button1.innerHTML = ""
+    
+    button2.setAttribute('onclick', "playAgain('no')")
+    button2.classList.add('popUpDone')
+    button2.classList.remove('popUpAgain')
+    button2.innerHTML = 'Got it.'
+  }
+}
+
+
+//Does user want to play again
+function playAgain(res) {
+  let popup = document.querySelector('.popUp')
+   
+   //if YES,
+  if (res === 'yes') {
+    popup.style.display = "none"
+    deleteBoard()
+    createBoard(activeCardDeck)
+    cssGridStyle(gridSize)
+
+  //else if NO,
+  } else if (res === 'no') {
+    popup.style.display = "none"
+  
+  //else if Time Expired
+  } else if (res === 'time') {
+    popup.style.display = "none"
+    deleteBoard()
+    gameSize(gridSize)
+  }
+  
+}

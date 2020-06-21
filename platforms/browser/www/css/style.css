@@ -1,0 +1,391 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  position: relative;
+  width: 100vw;
+  height: 100%;
+  background-color: #ccc;
+}
+
+
+/* Header */
+.header {
+  width: 100vw;
+  height: 50px;
+  background-color: #222;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+}
+
+.header h2,
+.header h3 {
+  width: 50%;
+}
+
+.messageContainer {
+  padding-left: 16px;
+  text-align: start;
+}
+
+.scoreContainer {
+  padding-right: 16px;
+  text-align: end;
+}
+
+.memoryContainer,
+.messageContainer,
+.scoreContainer {
+  font-size: 1rem;
+  }
+
+
+/* Settings Bar */
+.gridType {
+  background-color: #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 80px;
+}
+
+.gridContainer,
+.themeContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 16px 0 8px;
+}
+
+.gridContainer {
+  margin-bottom: 12px;
+}
+
+.gridText,
+.themeText {
+  color: green;
+  font-size: .80rem;
+  text-align: end;
+}
+
+.gridSize,
+.themeType {
+  width: 25%;
+  height: 24px;
+  border-radius: 0;
+  border: 0;
+  margin: 0 2px 0 8px;
+  box-shadow: 2px 2px 2px #333333;
+  background-color: green;
+  color: #fff;
+  font-size: .65rem;
+}
+
+.small,
+.animals {
+  margin-left: 8px;
+} 
+
+.gridSize:active,
+.themeType:active {
+  box-shadow: 0px 0px 2px #888888;
+  outline: 0px;
+}
+
+.gridSize:focus,
+.themeType:focus {
+  outline:0;
+}
+
+
+/* Game Board */
+.gameContainer {
+  overflow: hidden;
+  width: 100%;
+  height: calc(100vh - 180px);
+  background-image: url("../images/backgrounds/animalCardsBG.jpg");
+  background-color: green;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom; 
+  display: flex;
+  align-items: flex-start;
+  padding-top: 48px;
+}
+
+.gameBoard {
+  width: 90vw;
+  max-width: 600px;
+  max-height:calc(100vh - 150px);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.card {
+  padding: 3px;
+  width: 16.66667%;
+  display: flex;
+}
+
+.topCard {
+  width: 100%;
+  border: 2px solid #000;
+  border-radius: 15px;
+  transition: all .5s linear 0s;
+}
+
+/* Flashing Banner Message */
+.banner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ccc;
+  text-shadow: 2px 2px #333;
+  font-size: 1rem;
+  opacity: 0;
+  z-index: -10;
+}
+
+.bannerEnd {
+  z-index: 10;
+  animation: zoom 1s linear 1,
+             opacity 1s linear 1;
+}
+
+@keyframes zoom {
+  0% {transform: scale()}
+  100% {transform: scale(15)}
+}
+
+@keyframes opacity {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
+
+/* Card Flip Animation */
+.flipOn {
+  transform: rotateY(180deg);
+}
+
+.flipOff {
+  transform: rotate(0);
+}
+
+
+/* Footer */
+.footer {
+  width: 100%;
+  height: 50px;
+  background-color: #222; 
+}
+
+.footerContainer {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.creditsText {
+  color: #fff;
+  padding-right: 16px;
+}
+
+.creditsLink {
+  width: 50%;
+  color: green;
+  text-decoration: none;
+  padding-left: 8px;
+}
+
+.creditsLink:hover {
+  color: lightgreen;
+}
+
+
+/* Credits Modal */
+.modal {
+  width: 0px;
+  height: 3px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(51,42,12,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: height .5s linear .25s, width .5s linear .75s, z-index .25s linear 1.25s;
+}
+
+.modalOpen {
+  width: 100%;
+  height: 100%;
+  transition: width .5s  linear, height .5s linear .5s;
+}
+
+.modalContainer {
+  width: 80%;
+  max-width: 700px;
+  height: 80%;
+  border: 10px solid green;
+  border-radius: 15px;
+  background-image: url('../images/backgrounds/greenTexture.jpg');
+  background-color: #959E27;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transform: scale(0,0);
+  transition: transform .25s linear;
+}
+
+.modalContainerOpen {
+  transform: scale(1,1);
+  transition: transform .25s linear 1s;
+}
+
+.modalClose {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.modalContainer2 {
+  width: 90%;
+  height: 90%;
+  border: 6px solid green;
+  border-radius: 15px;
+  background-color: darkgreen;
+  box-shadow: 5px 5px 20px #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.creditsContainer {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+}
+
+.credits {
+  text-align: center;
+  padding: 16px;
+  color: #fff;
+}
+
+.creditTextContainer {
+  height: 70%;
+  width: 99.9%;
+  margin: auto;
+  background-color: #fff;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;  
+  overflow-y: scroll;
+}
+
+.creditTitle {
+  font-weight: bold;
+  font-size: .85rem;
+  padding: 8px 0 0px 0;
+}
+
+.creditText {
+  font-size: .70rem;
+}
+
+.creditLink {
+  text-decoration: none;
+  color: darkgreen;
+}
+
+.creditLink:hover {
+  color: green;
+}
+
+/* PopUp */
+.popUp {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left:0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.popUpContainer{
+  position: relative;
+  width: 300px;
+  height: 200px;
+  border: 6px solid green;
+  background-color: #fff;
+  box-shadow:  10px 10px 20px #333;
+}
+
+.popUpTextContainer {
+  height: 156px;
+  margin: 16px;
+}
+
+.popUpTitleContainer {
+  height: 100px;
+  padding: 8px;
+}
+
+.popUpStatement {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.popUpQuestion {
+  padding-top: 8px;
+  text-align: center;
+}
+
+.popUpButtonContainer {
+  height: 52px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.popUpDone,
+.popUpAgain {
+  width: 45%;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  border: 1px solid green;
+  color: green;
+  background-color: #fff;
+}
+
+.popUpDone:hover,
+.popUpAgain:hover {
+  background-color: green;
+  color: #fff;
+  cursor: pointer;
+}

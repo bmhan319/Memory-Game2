@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.hanb.memorytime" version="1.0.0" versionCode="1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
+    <feature name="Device">
+        <param name="browser-package" value="Device" />
+    </feature>
+    <name>Memory Time</name>
+    <description>The classic memory game</description>
+    <author email="support@memorytime.com" href="">Brian H</author>
+    <icon src="icon.png" />
+    <access />
+    <allow-intent href="http://*/*" />
+    <preference name="permissions" value="none" />
+    <preference name="orientation" value="default" />
+    <preference name="fullscreen" value="true" />
+    <preference name="android-installLocation" value="auto" />
+</widget>
