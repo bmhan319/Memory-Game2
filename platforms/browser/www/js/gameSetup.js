@@ -39,7 +39,7 @@ function createBoard(cardSet) {
   
   gameBoard.innerHTML = message
   shuffle(cardSet)
-  resetData()
+  //resetData()
 
   document.querySelector('.header').style.backgroundColor = "blue"
   
