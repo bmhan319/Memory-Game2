@@ -20,13 +20,14 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
   document.addEventListener('load', () => {
-  alert("hi")
+  document.querySelector('.header').style.color = "red"
   createBoard(defaultCards)
   })
 }
 
 //On Page Load, load gameboard
 window.addEventListener('load', () => {
+  document.querySelector('.header').style.backgroundColor = "red"
   createBoard(defaultCards)
 })
 
