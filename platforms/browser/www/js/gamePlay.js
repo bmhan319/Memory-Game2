@@ -15,8 +15,17 @@ let cardsFlippedIndex = []
 let timer
 
 
+//For App
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+  document.addEventListener('load', () => {
+  createBoard(defaultCards)
+  })
+}
+
 //On Page Load, load gameboard
-document.addEventListener('load', () => {
+window.addEventListener('load', () => {
   createBoard(defaultCards)
 })
 
