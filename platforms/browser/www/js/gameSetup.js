@@ -5,8 +5,8 @@ function createBoard(cardSet) {
   const message = '<h3 id="banner" class="banner">Match</h3>'
   
   gameBoard.innerHTML = message
-  document.querySelector('.header').style.backgroundColor = "green"
   shuffle(cardSet)
+  document.querySelector('.header').style.backgroundColor = "green"
   resetData()
   
   for (let i = 0; i < cardSet.length; i++) {
