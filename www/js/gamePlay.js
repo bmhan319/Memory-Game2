@@ -20,6 +20,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
   document.addEventListener('load', () => {
+  alert("hi")
   createBoard(defaultCards)
   })
 }
