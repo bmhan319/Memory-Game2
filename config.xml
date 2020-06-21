@@ -15,7 +15,8 @@
   <preference name="orientation"                value="default" />        <!-- all: default means both landscape and portrait are enabled -->
   <preference name="fullscreen"                 value="true" />           <!-- all: hides the status bar at the top of the screen -->
   <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
-  
+  <preference name="android-minSdkVersion" value="14" />
+  <plugin name="cordova-plugin-splashscreen" source="npm" spec="~3.2.1" />
   <icon src="icon.png" />
 
   <platform name="android">
@@ -32,7 +33,7 @@
     <splash density="land-xhdpi" src="www/images/splash/android/screen-xhdpi-landscape.png" />
     <splash density="land-xxhdpi" src="www/images/splash/android/screen-xxhdpi-landscape.png" />
     <splash density="land-xxxhdpi" src="www/images/splash/android/screen-xxxhdpi-landscape.png" />
-    
+
     <splash density="port-ldpi" src="www/images/splash/android/screen-ldpi-portrait.png" />
     <splash density="port-mdpi" src="www/images/splash/android/screen-mdpi-portrait.png" />
     <splash density="port-hdpi" src="www/images/splash/android/screen-hdpi-portrait.png" />
