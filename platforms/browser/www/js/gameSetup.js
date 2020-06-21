@@ -3,11 +3,11 @@ function createBoard(cardSet) {
   //Create element to flash message.  
   //This gets deleted everytime game resets so needs to be recreated.
   const message = '<h3 id="banner" class="banner">Match</h3>'
-  document.querySelector('.header').style.backgroundColor = "red"
+  
   gameBoard.innerHTML = message
   shuffle(cardSet)
   resetData()
-  
+  document.querySelector('.header').style.backgroundColor = "green"
   for (let i = 0; i < cardSet.length; i++) {
     let topCard = document.createElement('div')
     if (currentColor == 'green') {
