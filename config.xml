@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<widget xmlns   = "http://www.w3.org/ns/widgets"
+    xmlns:gap   = "http://phonegap.com/ns/1.0"
+    id          = "com.hanb.memorytime"
+    versionCode = "1"
+    version     = "1.0.0" >
+
+
+  <name>Memory Time</name>
+  <description>The classic memory game</description>
+  <author href="" email="support@memorytime.com">Brian H</author>
+
+  <preference name="permissions" value="none"/>
+  <preference name="orientation"                value="default" />        <!-- all: default means both landscape and portrait are enabled -->
+  <preference name="fullscreen"                 value="true" />           <!-- all: hides the status bar at the top of the screen -->
+  <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
+  
+  <icon src="icon.png" />
+
+  <platform name="android">
+    <icon density="ldpi" src="www/images/icon/android/icon-36-ldpi.png" />
+    <icon density="mdpi" src="www/images/icon/android/icon-48-mdpi.png" />
+    <icon density="hdpi" src="www/images/icon/android/icon-72-hdpi.png" />
+    <icon density="xhdpi" src="www/images/icon/android/icon-96-xhdpi.png" />
+    <icon density="xxhdpi" src="www/images/icon/android/icon-144-xxhdpi.png" />
+    <icon density="xxxhdpi" src="www/images/icon/android/icon-192-xxxhdpi.png" />
+
+    <splash density="land-ldpi" src="www/images/splash/android/screen-ldpi-landscape.png" />
+    <splash density="land-mdpi" src="www/images/splash/android/screen-mdpi-landscape.png" />
+    <splash density="land-hdpi" src="www/images/splash/android/screen-hdpi-landscape.png" />
+    <splash density="land-xhdpi" src="www/images/splash/android/screen-xhdpi-landscape.png" />
+    <splash density="land-xxhdpi" src="www/images/splash/android/screen-xxhdpi-landscape.png" />
+    <splash density="land-xxxhdpi" src="www/images/splash/android/screen-xxxhdpi-landscape.png" />
+    
+    <splash density="port-ldpi" src="www/images/splash/android/screen-ldpi-portrait.png" />
+    <splash density="port-mdpi" src="www/images/splash/android/screen-mdpi-portrait.png" />
+    <splash density="port-hdpi" src="www/images/splash/android/screen-hdpi-portrait.png" />
+    <splash density="port-xhdpi" src="www/images/splash/android/screen-xhdpi-portrait.png" />
+    <splash density="port-xxhdpi" src="www/images/splash/android/screen-xxhdpi-portrait.png" />
+    <splash density="port-xxxhdpi" src="www/images/splash/android/screen-xxxhdpi-portrait.png" />
+  </platform>
+
+  <access /> 
+
+  <allow-intent href="http://*/*" />
+
+</widget>
