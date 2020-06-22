@@ -15,7 +15,7 @@
   <preference name="orientation"                value="default" />        <!-- all: default means both landscape and portrait are enabled -->
   <preference name="fullscreen"                 value="false" />           <!-- all: hides the status bar at the top of the screen -->
   <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
-  <preference name="android-minSdkVersion" value="28" />
+  <preference name="android-minSdkVersion" value="25" />
   <plugin name="cordova-plugin-splashscreen" source="npm" spec="~3.2.1" />
   <preference name="AutoHideSplashScreen" value="true" />
   <preference name="FadeSplashScreen" value="false" />
