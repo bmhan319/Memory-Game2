@@ -19,7 +19,9 @@
   <plugin name="cordova-plugin-splashscreen" source="npm" spec="~3.2.1" />
   <preference name="AutoHideSplashScreen" value="true" />
   <preference name="SplashScreenDelay" value="3000" />
+  <preference name="SplashScreen" value="splash" />
   <icon src="icon.png" />
+  <splash src="splash.png" />
 
   <platform name="android">
     <icon density="ldpi" src="www/images/icon/android/icon-36-ldpi.png" />
