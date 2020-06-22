@@ -6,6 +6,7 @@ function resetData() {
   cardFlippedID1 = []
   cardFlippedID2 = []
   cardsFlippedIndex = []
+  document.querySelector('.header').style.backgroundColor = "blue"
   clearInterval(timer)
   timerDisplay('00')
   message.innerHTML = ""
@@ -39,9 +40,7 @@ function createBoard(cardSet) {
   
   gameBoard.innerHTML = message
   shuffle(cardSet)
-  //resetData()
-
-  document.querySelector('.header').style.backgroundColor = "blue"
+  resetData()
   
   for (let i = 0; i < cardSet.length; i++) {
     let topCard = document.createElement('div')
