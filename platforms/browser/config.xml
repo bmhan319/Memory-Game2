@@ -7,13 +7,16 @@
     <description>The classic memory game</description>
     <author email="support@memorytime.com" href="">Brian H</author>
     <icon src="icon.png" />
+    <splash src="splash.png" />
     <access />
     <allow-intent href="http://*/*" />
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
-    <preference name="fullscreen" value="true" />
+    <preference name="fullscreen" value="false" />
     <preference name="android-installLocation" value="auto" />
-    <preference name="android-minSdkVersion" value="28" />
+    <preference name="android-minSdkVersion" value="25" />
     <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="FadeSplashScreen" value="false" />
     <preference name="SplashScreenDelay" value="3000" />
+    <preference name="SplashScreen" value="splash" />
 </widget>
